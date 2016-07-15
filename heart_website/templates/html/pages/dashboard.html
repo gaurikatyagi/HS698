@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Boostbox - Dashboard</title>
+
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/jquery-ui/jquery-ui-boostbox.css') }}" />
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/fullcalendar/fullcalendar.css') }}" />
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/html5shiv.js?1401481649') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/respond.min.js?1401481651') }}"></script>
+		<![endif]-->
+	</head>
+	<body class="body-striped">
+
+		<!-- BEGIN HEADER-->
+		<header id="header">
+
+			<!-- BEGIN NAVBAR -->
+			<nav class="navbar navbar-default" role="navigation">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
+					<div class="navbar-brand">
+						<a class="main-brand" href="{{ url_for('dashboard') }}">
+							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
+						</a>
+					</div><!--end .navbar-brand -->
+					<a class="btn btn-transparent btn-equal navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse"><i class="fa fa-wrench fa-lg"></i></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="header-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="{{ url_for('dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
+					</ul><!--end .nav -->
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-flask"></i></a>
+							<ul class="dropdown-menu animation-slide theme-selector">
+								<li class="dropdown-header">Themes</li>
+								<li><a href="theme-default">Theme default</a></li>
+								<li><a href="theme-1">Theme 1</a></li>
+								<li><a href="theme-2">Theme 2</a></li>
+								<li><a href="theme-3">Theme 3</a></li>
+								<li><a href="theme-4">Theme 4</a></li>
+								<li><a href="theme-5">Theme 5</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li><span class="navbar-devider"></span></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-lg fa-dashboard"></i>
+                            <sup class="badge badge-support2">2</sup>
+                            </a>
+							<ul class="dropdown-menu animation-dock">
+								<li class="dropdown-header">Server load</li>
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Today</strong></span>
+											<strong class="pull-right">93%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Yesterday</strong></span>
+											<strong class="pull-right">30%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Lastweek</strong></span>
+											<strong class="pull-right">74%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li><span class="navbar-devider"></span></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold"
+                               data-toggle="dropdown">Gaurika Tyagi <i class="fa fa-fw fa-angle-down"></i>
+                                <img class="img-circle" src="{{ url_for('static', filename = 'assets/img/heart_beat.gif') }}" alt="" width="40" height="20"/>
+                            </a>
+							<ul class="dropdown-menu animation-slide">
+								<li class="dropdown-header">Config</li>
+								<li><a href="{{ url_for('profile') }}">My profile</a></li>
+								<li class="divider"></li>
+								<li><a href="{{ url_for('login') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+					</ul><!--end .nav -->
+				</div><!--end #header-navbar-collapse -->
+			</nav>
+			<!-- END NAVBAR -->
+
+		</header>
+		<!-- END HEADER-->
+
+		<!-- BEGIN BASE-->
+		<div id="base">
+
+			<!-- BEGIN SIDEBAR-->
+			<div id="sidebar">
+				<div class="sidebar-back"></div>
+				<div class="sidebar-content">
+					<div class="nav-brand">
+						<a class="main-brand" href="https://www.linkedin.com/in/gaurikatyagi">
+							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
+						</a>
+					</div>
+
+					<!-- BEGIN MAIN MENU -->
+					<ul class="main-menu">
+						<!-- Menu Dashboard -->
+						<li>
+							<a href="{{ url_for('dashboard') }}" >
+								<i class="fa fa-home fa-fw"></i><span class="title">Dashboard</span>
+							</a>
+						</li><!--end /menu-item -->
+                        <li>
+                            <a href="{{ url_for('profile') }}" >
+
+                                <i class="fa fa-user fa-fw"></i><span class="title">User profile</span>
+                            </a>
+                        </li>
+						<!-- Menu Pages -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-file fa-fw"></i><span class="title">I'll be right back</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="{{ url_for('locked') }}" ><i class="fa fa-key fa-fw"></i>Lock screen</a></li>
+								<li><a href="{{ url_for('blank') }}" >Blank page</a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+                    </ul>
+                </div><!-- Menu Tables -->
+            </div><!--end #sidebar-->
+            <!-- END SIDEBAR -->
+
+			<!-- BEGIN CONTENT-->
+			<div id="content">
+				<section>
+					<div class="section-header">
+						<h3 class="text-standard"><i class="fa fa-fw fa-arrow-circle-right text-gray-light"></i> Dashboard <small>Welcome Gaurika Tyagi</small></h3>
+					</div>
+					<div class="section-body">
+						<div class="row">
+
+							<!-- BEGIN LINE CHART -->
+							<div class="col-md-9">
+								<div class="box style-primary">
+									<div class="box-head">
+										<header>
+											<h3 class="text-light">Site <strong>visits</strong></h3>
+											<small class="opacity-75">People who visited this site</small>
+										</header>
+										<div class="tools stick-top-right">
+											<div class="btn-group btn-group-transparent">
+												<div class="btn-group">
+													<a href="#" class="btn btn-equal btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-flask"></i></a>
+													<ul class="dropdown-menu animation-dock pull-right menu-box-styling" role="menu" style="text-align: left;">
+														<li><a href="javascript:void(0);" data-style="style-primary">Style primary</a></li>
+														<li><a href="javascript:void(0);" data-style="style-info">Style info</a></li>
+														<li><a href="javascript:void(0);" data-style="style-success">Style success</a></li>
+														<li><a href="javascript:void(0);" data-style="style-warning">Style warning</a></li>
+														<li><a href="javascript:void(0);" data-style="style-danger">Style danger</a></li>
+														<li><a href="javascript:void(0);" data-style="style-inverse">Style inverse</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support1">Style support 1</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support2">Style support 2</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support3">Style support 3</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support4">Style support 4</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support5">Style support 5</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support1-gradient">Style support-gradient 1</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support2-gradient">Style support-gradient 2</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support3-gradient">Style support-gradient 3</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support4-gradient">Style support-gradient 4</a></li>
+														<li><a href="javascript:void(0);" data-style="style-support5-gradient">Style support-gradient 5</a></li>
+														<li><a href="javascript:void(0);" data-style="style-primary-gradient">Style primary-gradient</a></li>
+													</ul>
+												</div>
+												<a class="btn btn-equal btn-sm btn-refresh"><i class="fa fa-refresh"></i></a>
+												<a class="btn btn-equal btn-sm btn-collapse"><i class="fa fa-angle-down"></i></a>
+												<a class="btn btn-equal btn-sm btn-close"><i class="fa fa-times"></i></a>
+											</div>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="visitor-chart" class="flot height-5" data-title="Site visits" data-color="#ffffff,#f8576c"></div>
+									</div>
+									<div class="box-body style-body">
+										<div class="col-sm-5">
+											<div class="pie-chart flot">
+												<div class="chart size-3 v-inline-middle" data-title="Site visits" data-color="#6bafbd,#f8576c"></div>
+												<div class="legend v-inline-middle"></div>
+											</div>
+										</div>
+										<div class="col-sm-7">
+											<br/><br/>
+											<div class="width-5 pull-right">
+												<div class="pull-left">
+													<span class="text-sm text-muted">My balans &nbsp;&nbsp;</span><br/>
+													<span class="text-bold">33,896.50 &nbsp;&nbsp;</span>
+												</div>
+												<span class="inlinesparkline" data-type="bar" data-height="33" data-bar-color="#6bafbd">3,2,1,11,9,5,3,4,2,6,5,2,6,2</span>
+											</div>
+											<div class="width-5 pull-right">
+												<div class="pull-left">
+													<span class="text-sm text-muted">New Orders &nbsp;&nbsp;</span><br/>
+													<span class="text-bold">17,555 &nbsp;&nbsp;</span>
+												</div>
+												<span class="inlinesparkline" data-type="bar" data-height="33" data-bar-color="#f8576c">6,5,2,6,2,4,5,1,3,2,1,11,9,5</span>
+											</div>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-lg-6 -->
+							<!-- END LINE CHART -->
+
+							<!-- BEGIN DONUT CHART -->
+							<div class="col-md-3">
+								<div class="box style-body text-center">
+									<div class="box-head">
+										<header>
+											<h3 class="text-light">New <strong>visits</strong></h3>
+											<small class="text-gray-light">Till next business event</small>
+										</header>
+										<div class="tools stick-top-right">
+											<div class="btn-group btn-group-transparent">
+												<a class="btn btn-equal btn-sm btn-collapse"><i class="fa fa-angle-down"></i></a>
+											</div>
+										</div>
+									</div>
+									<div class="box-body">
+										<div class="knob knob-support3 knob-body-track size-5"><input type="text" class="dial" data-min="0" data-max="365" value="286" data-readOnly=true></div>
+									</div>
+									<div class="box-body style-support2 mask height-3 text-left">
+										<div class="bottom-layer">
+											<i class="fa fa-group fa-10x icon-tilt-alt stick-top-right opacity-25"></i>
+										</div>
+										<div class="top-layer">
+											<span class="text-lg text-bolder">Total visits</span><br/>
+											<span>Smaller text</span>
+										</div>
+									</div>
+									<div class="box-head style-body no-padding">
+										<div class="col-lg-4 text-gray-light">
+											<header>
+												<h4 class="text-bold">645</h4>
+												<small>Tweets</small>
+											</header>
+										</div>
+										<div class="col-lg-4 text-gray-light">
+											<header>
+												<h4 class="text-bold">890</h4>
+												<small>Following</small>
+											</header>
+										</div>
+										<div class="col-lg-4 text-gray-light">
+											<header>
+												<h4 class="text-bold">8745</h4>
+												<small>Followers</small>
+											</header>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-lg-3 -->
+							<!-- END DONUT CHART -->
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+				<section>
+					<div class="section-body">
+						<div class="row">
+
+							<!-- BEGIN TODO LIST -->
+							<div class="col-md-6">
+								<div class="box">
+									<div class="box-head box-head-lg">
+										<header>
+											<h3 class="text-light text-support2"><strong>Calendar</strong></h3>
+										</header>
+										<div class="tools stick-top-right">
+											<div class="btn-group">
+												<a class="btn btn-white"><i class="fa fa-plus-circle fa-fw"></i> Add task</a>
+											</div>
+										</div>
+									</div>
+									<div class="box-body no-padding">
+                                        <div class="col-lg-12">
+								<div class="box box-tiles style-support3">
+									<div class="row">
+										<div class="col-md-3">
+											<div class="box-body-darken small-padding style-support3" style="width: 528px"> </div>
+											<div class="force-padding" >
+												<h1 class="text-light selected-day">&nbsp;</h1>
+												<h3 class="text-light selected-date">&nbsp;</h3>
+											</div>
+                                            <div class="box-body-darken small-padding style-support3" style="width: 528px"> </div>
+										</div><!--end .col-md-3 -->
+										<div class="col-md-9 style-white" style="display: none">
+											<div id="calendar"></div>
+										</div><!--end .col-md-9 -->
+									</div><!--end .row -->
+								</div><!--end .box -->
+							</div><!--end .col-lg-12 -->
+									</div><!--end .box-body -->
+								</div><!--end .box -->
+							</div><!--end .col-lg-3 -->
+							<!-- END TODO LIST -->
+
+							<!-- BEGIN TABBAR -->
+							<div class="col-md-6">
+								<div class="box tabs-below">
+									<div class="box-body no-padding tab-content">
+										<div class="tab-pane force-padding style-support5" id="tab-sales">
+											<div id="sales-chart" class="flot height-5" data-title="Prdouct sales"></div>
+										</div>
+										<div class="tab-pane force-padding active" id="pane-birthdays">
+											<div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+												<div class="carousel-inner">
+													<div class="item active">
+														<div class="row">
+															<div class="col-md-5 text-center">
+																<img class="img-circle" src="{{ url_for('static', filename='assets/img/admin.jpeg')}}" alt="" />
+															</div>
+															<div class="col-md-7">
+																<p class="text-support5">
+																	<span class="text-xl text-bold">Gaurika Tyagi</span><br>
+																</p>
+																<ul class="list-unstyled list-extra-spacing">
+																	<li>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+																			<i class="fa fa-gift fa-stack-1x fa-inverse"></i>
+																		</span>
+																		<span class="text-sm">May 27, 1991</span>
+																	</li>
+																	<li>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+																			<i class="fa fa-location-arrow fa-stack-1x fa-inverse"></i>
+																		</span>
+																		<span class="text-sm">621 Ave, San Francisco</span>
+																	</li>
+																	<li>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+																			<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+																		</span>
+																		<span class="text-sm">tyagigaurika27@gmail.com</span>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+												<a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+													<span class="glyphicon glyphicon-chevron-left"></span>
+												</a>
+												<a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+													<span class="glyphicon glyphicon-chevron-right"></span>
+												</a>
+											</div>
+										</div>
+										<div class="tab-pane height-6 force-padding" id="pane-image">
+{#											<div class="img-backdrop" style="background-image: url('../../assets/img/img1.jpg')">#}
+											<div class="img-backdrop" style= background-image: {{url_for('static', filename = 'assets/img/heart_beat.gif')}})>
+											</div>
+											<div class="holder">
+												<h2 class="text-light text-white">Full-sized <strong>backdrop image</strong></h2>
+											</div>
+										</div>
+									</div>
+									<ul class="box-head nav nav-tabs nav-justified style-support5" data-toggle="tabs">
+										<li><a href="#tab-sales"><span class="text-xl">1282</span><br/>Sales</a></li>
+										<li class="active"><a href="#pane-birthdays"><span class="text-xl">3</span><br/>Birthdays</a></li>
+										<li><a href="#pane-image"><span class="text-xl">31</span><br/>Images</a></li>
+									</ul>
+								</div>
+							</div>
+							<!-- END TABBAR -->
+
+						</div><!--end .row -->
+						<div class="row">
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+			</div><!--end #content-->
+			<!-- END CONTENT -->
+
+		</div><!--end #base-->
+		<!-- END BASE -->
+
+		<!-- BEGIN JAVASCRIPT -->
+		<!--[if lte IE 8]>
+		<script src="{{ url_for('static', filename='assets/js/libs/excanvas-modified/excanvas.min.js')}}"></script>
+		<![endif]-->
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-1.11.0.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery-ui/jquery-ui-1.10.3.custom.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/BootstrapFixed.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/spin.js/spin.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/moment/moment.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.time.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.resize.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.orderBars.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.pie.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery-knob/jquery.knob.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/sparkline/jquery.sparkline.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/slimscroll/jquery.slimscroll.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/fullcalendar/fullcalendar.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoCharts.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoDashboard.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
+		<!-- END JAVASCRIPT -->
+
+	</body>
+</html>

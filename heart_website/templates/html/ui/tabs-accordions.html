@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Boostbox - Boxes</title>
+
+		<!-- BEGIN META -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="your,keywords">
+		<meta name="description" content="Short explanation about this website">
+		<!-- END META -->
+
+		<!-- BEGIN STYLESHEETS -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
+		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/bootstrap.css?1403937764" />
+		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox.css?1403937765" />
+		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox_responsive.css?1403937765" />
+		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/font-awesome.min.css?1401481653" />
+		<!-- END STYLESHEETS -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1401481649"></script>
+		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1401481651"></script>
+		<![endif]-->
+	</head>
+	<body >
+
+		<!-- BEGIN HEADER-->
+		<header id="header">
+
+			<!-- BEGIN NAVBAR -->
+			<nav class="navbar navbar-default" role="navigation">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
+					<div class="navbar-brand">
+						<a class="main-brand" href="../dashboards/dashboard.html">
+							<h3 class="text-light text-white"><span>Boost<strong>Box</strong> </span><i class="fa fa-rocket fa-fw"></i></h3>
+						</a>
+					</div><!--end .navbar-brand -->
+					<a class="btn btn-transparent btn-equal navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse"><i class="fa fa-wrench fa-lg"></i></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="header-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="../dashboards/dashboard.html"><i class="fa fa-home fa-lg"></i></a></li>
+					</ul><!--end .nav -->
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-flask"></i></a>
+							<ul class="dropdown-menu animation-slide theme-selector">
+								<li class="dropdown-header">Themes</li>
+								<li><a href="theme-default">Theme default</a></li>
+								<li><a href="theme-1">Theme 1</a></li>
+								<li><a href="theme-2">Theme 2</a></li>
+								<li><a href="theme-3">Theme 3</a></li>
+								<li><a href="theme-4">Theme 4</a></li>
+								<li><a href="theme-5">Theme 5</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li><span class="navbar-devider"></span></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-envelope"></i><sup class="badge badge-support2">2</sup></a>
+							<ul class="dropdown-menu animation-zoom">
+								<li class="dropdown-header">Today's messages</li>
+								<li>
+									<a class="alert alert-warning" href="javascript:void(0);">
+										<img class="pull-right img-circle dropdown-avatar" src="../../assets/img/avatar2.jpg?1401481650" alt="" />
+										<strong>Alex Anistor</strong><br/>
+										<small>Testing functionality...</small>
+									</a>
+								</li>
+								<li>
+									<a class="alert alert-info" href="javascript:void(0);">
+										<img class="pull-right img-circle dropdown-avatar" src="../../assets/img/avatar3.jpg?1401481654" alt="" />
+										<strong>Alicia Adell</strong><br/>
+										<small>Reviewing last changes...</small>
+									</a>
+								</li>
+								<li class="dropdown-header">Options</li>
+								<li><a href="../pages/login.html">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+								<li><a href="../pages/login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-dashboard"></i></a>
+							<ul class="dropdown-menu animation-dock">
+								<li class="dropdown-header">Server load</li>
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Today</strong></span>
+											<strong class="pull-right">93%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Yesterday</strong></span>
+											<strong class="pull-right">30%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+								<li class="dropdown-progress">
+									<a href="javascript:void(0);">
+										<div class="dropdown-label">
+											<span class="text-light">Server load <strong>Lastweek</strong></span>
+											<strong class="pull-right">74%</strong>
+										</div>
+										<div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
+									</a>
+								</li><!--end .dropdown-progress -->
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+						<li><span class="navbar-devider"></span></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold" data-toggle="dropdown">Daniel Johnson <i class="fa fa-fw fa-angle-down"></i> <img class="img-circle" src="../../assets/img/avatar1.jpg?1401481655" alt="" /></a>
+							<ul class="dropdown-menu animation-slide">
+								<li class="dropdown-header">Config</li>
+								<li><a href="../pages/profile.html">My profile</a></li>
+								<li><a href="../../html/pages/blog/post.html">My blog <span class="badge badge-danger pull-right">16</span></a></li>
+								<li><a href="../pages/calendar.html">My appointments</a></li>
+								<li class="divider"></li>
+								<li><a href="../pages/login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+							</ul><!--end .dropdown-menu -->
+						</li><!--end .dropdown -->
+					</ul><!--end .nav -->
+				</div><!--end #header-navbar-collapse -->
+			</nav>
+			<!-- END NAVBAR -->
+
+		</header>
+		<!-- END HEADER-->
+
+		<!-- BEGIN BASE-->
+		<div id="base">
+
+			<!-- BEGIN SIDEBAR-->
+			<div id="sidebar">
+				<div class="sidebar-back"></div>
+				<div class="sidebar-content">
+					<div class="nav-brand">
+						<a class="main-brand" href="../dashboards/dashboard.html">
+							<h3 class="text-light text-white"><span>Boost<strong>Box</strong> </span><i class="fa fa-rocket fa-fw"></i></h3>
+						</a>
+					</div>
+
+					<!-- BEGIN MENU SEARCH -->
+					<form class="sidebar-search" role="search">
+						<a href="javascript:void(0);"><i class="fa fa-search fa-fw search-icon"></i><i class="fa fa-angle-left fa-fw close-icon"></i></a>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control navbar-input" placeholder="Search...">
+								<span class="input-group-btn">
+									<button class="btn btn-equal" type="button"><i class="fa fa-search"></i></button>
+								</span>
+							</div>
+						</div>
+					</form>
+					<!-- END MENU SEARCH -->
+
+					<!-- BEGIN MAIN MENU -->
+					<ul class="main-menu">
+						<!-- Menu Dashboard -->
+						<li>
+							<a href="../dashboards/dashboard.html" >
+								<i class="fa fa-home fa-fw"></i><span class="title">Dashboard</span>
+							</a>
+						</li><!--end /menu-item -->
+						<!-- Menu UI -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-puzzle-piece fa-fw"></i><span class="title">UI features</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="boxes.html" >Boxes</a></li>
+								<li><a href="buttons.html" >Buttons</a></li>
+								<li><a href="grid.html" >Grid</a></li>
+								<li><a href="lists.html" >Lists</a></li>
+								<li><a href="../../html/ui/tabs-accordions.html" class="active">Tabs & Accordions</a></li>
+								<li><a href="typography.html" >Typography</a></li>
+								<li><a href="../" >Icons</a></li>
+								<li><a href="../tml" >Messages</a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+						<!-- Menu Pages -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-file fa-fw"></i><span class="title">Pages</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="../rofile.html" >User profile<span class="badge">42</span></a></li>
+								<li><a href="..//pages/invoice.html" >Invoice</a></li>
+								<li><a href="../alendar.html" >Calendar</a></li>
+								<li><a href="..//pages/pricing.html" >Pricing</a></li>
+								<li>
+									<a href="javascript:void(0);">
+										<span class="expand-sign">+</span> <span class="title">Blog</span>
+									</a>
+									<!--start submenu -->
+									<ul>
+										<li><a href="..//pages/blog/masonry.html" >Blog masonry</a></li>
+										<li><a href="..//pages/blog/list.html" >Blog list</a></li>
+										<li><a href="..//pages/blog/post.html" >Blog post</a></li>
+									</ul><!--end /submenu -->
+								</li><!--end /menu-item -->
+								<li><a href="../ocked.html" >Lock screen</a></li>
+								<li><a href="../ogin.html" >Login</a></li>
+								<li>
+									<a href="javascript:void(0);">
+										<span class="expand-sign">+</span> <span class="title">Error pages</span>
+									</a>
+									<!--start submenu -->
+									<ul>
+										<li><a href="../04.html" >404 page</a></li>
+										<li><a href="../00.html" >500 page</a></li>
+									</ul><!--end /submenu -->
+								</li><!--end /menu-item -->
+								<li><a href="../lank.html" >Blank page</a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+						<!-- Menu Tables -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-th fa-fw"></i><span class="title">Tables</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="../static.html" >Static Tables</a></li>
+								<li><a href="../dynamic.html" >Dynamic Tables</a></li>
+								<li><a href="../responsive.html" >Responsive Table</a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+						<!-- Menu Forms -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-list fa-fw"></i><span class="title">Forms</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="../ayouts.html" >Form layouts</a></li>
+								<li><a href="../omponents.html" >Form components</a></li>
+								<li><a href="../ditors.html" >Editors</a></li>
+								<li><a href="../ileupload.html" >File upload</a></li>
+								<li><a href="../alidation.html" >Form validation</a></li>
+								<li><a href="../izard.html" >Form wizard</a></li>
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+						<!-- Menu Charts -->
+						<li>
+							<a href="../chart.html" >
+								<i class="fa fa-bar-chart-o fa-fw"></i><span class="title">Visual charts</span>
+							</a>
+						</li><!--end /menu-item -->
+						<!-- Menu Levels -->
+						<li>
+							<a href="javascript:void(0);">
+								<i class="fa fa-folder-open fa-fw"></i><span class="title">Menu levels</span> <span class="expand-sign">+</span>
+							</a>
+							<!--start submenu -->
+							<ul>
+								<li><a href="#"><span class="title">Item 1</span></a></li>
+								<li><a href="#"><span class="title">Item 1</span></a></li>
+								<li>
+									<a href="javascript:void(0);">
+										<span class="expand-sign">+</span> <span class="title">Open level 2</span>
+									</a>
+									<!--start submenu -->
+									<ul>
+										<li><a href="#"><span class="title">Item 2</span></a></li>
+										<li>
+											<a href="javascript:void(0);">
+												<span class="expand-sign">+</span> <span class="title">Open level 3</span>
+											</a>
+											<!--start submenu -->
+											<ul>
+												<li><a href="#"><span class="title">Item 3</span></a></li>
+												<li><a href="#"><span class="title">Item 3</span></a></li>
+												<li>
+													<a href="javascript:void(0);">
+														<span class="expand-sign">+</span> <span class="title">Open level 4</span>
+													</a>
+													<!--start submenu -->
+													<ul>
+														<li><a href="#"><span class="title">Item 4</span></a></li>
+														<li>
+															<a href="javascript:void(0);">
+																<span class="expand-sign">+</span> <span class="title">Open level 5</span>
+															</a>
+															<!--start submenu -->
+															<ul>
+																<li><a href="#"><span class="title">Item 5</span></a></li>
+																<li><a href="#"><span class="title">Item 5</span></a></li>
+															</ul><!--end /submenu -->
+														</li><!--end /submenu-item -->
+													</ul><!--end /submenu -->
+												</li><!--end /submenu-item -->
+											</ul><!--end /submenu -->
+										</li><!--end /submenu-item -->
+									</ul><!--end /submenu -->
+								</li><!--end /submenu-item -->
+							</ul><!--end /submenu -->
+						</li><!--end /menu-item -->
+					</ul><!--end .main-menu -->
+					<!-- END MAIN MENU -->
+
+				</div>
+			</div><!--end #sidebar-->
+			<!-- END SIDEBAR -->
+
+			<!-- BEGIN CONTENT-->
+			<div id="content">
+				<section>
+					<ol class="breadcrumb">
+						<li><a href="..//.html">home</a></li>
+						<li class="active">Tabs</li>
+					</ol>
+					<div class="section-header">
+						<h3 class="text-standard"><i class="fa fa-fw fa-arrow-circle-right text-gray-light"></i> Tabs & Accordions <small>Mixt with boxes</small></h3>
+					</div>
+					<div class="section-body">
+						<div class="row">
+							<!-- START HEADER TABS RIGHT ALIGNED -->
+							<div class="col-md-6">
+								<div class="box">
+									<div class="box-head">
+										<header><h4 class="text-light">Tab <strong>box</strong></h4></header>
+										<ul class="nav nav-tabs pull-right" data-toggle="tabs">
+											<li class="active"><a href="#home"><i class="fa fa-fw fa-home"></i> Home</a></li>
+											<li><a href="#about"><i class="fa fa-fw fa-info"></i> About</a></li>
+											<li><a href="#contact"><i class="fa fa-fw fa-phone"></i> Contact</a></li>
+										</ul>
+									</div>
+									<div class="box-body tab-content">
+										<div class="tab-pane active" id="home"><p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+										</div>
+										<div class="tab-pane" id="about"><p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+										</div>
+										<div class="tab-pane" id="contact"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+											<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END HEADER TABS RIGHT ALIGNED -->
+
+							<!-- START HEADER TABS LEFT ALIGNED -->
+							<div class="col-md-6">
+								<div class="box">
+									<div class="box-head">
+										<ul class="nav nav-tabs" data-toggle="tabs">
+											<li class="active"><a href="#inbox"><i class="fa fa-fw fa-inbox"></i> Inbox</a></li>
+											<li><a href="#send"><i class="fa fa-fw fa-forward"></i> Send</a></li>
+											<li><a href="#deleted"><i class="fa fa-fw fa-trash-o"></i> Deleted</a></li>
+										</ul>
+									</div>
+									<div class="box-body tab-content">
+										<div class="tab-pane active" id="inbox"><p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+										</div>
+										<div class="tab-pane" id="send"><p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+										</div>
+										<div class="tab-pane" id="deleted"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+											<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END HEADER TABS LEFT ALIGNED -->
+
+						</div><!--end .row -->
+						<div class="row">
+							<!-- START LEFT TABS -->
+							<div class="col-md-6">
+								<div class="box tabs-left style-transparent">
+									<ul class="box-head nav nav-tabs" data-toggle="tabs">
+										<li><a href="#personal">Personal details</a></li>
+										<li class="active"><a href="#aboutus">About us</a></li>
+										<li><a href="#favorites1">Favorites</a></li>
+									</ul>
+									<div class="box-body tab-content style-white">
+										<div class="tab-pane" id="personal"><h3 class="text-light">Daniel <strong>Johnson</strong></h3>
+											<p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+											<dl class="dl-horizontal">
+												<dt>Description lists</dt>
+												<dd>A description list is perfect for defining terms.</dd>
+												<dt>Euismod</dt>
+												<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+												<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+												<dt>Malesuada porta</dt>
+												<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+												<dt>Felis euismod semper eget lacinia</dt>
+												<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+											</dl>
+										</div>
+										<div class="tab-pane active" id="aboutus">
+											<h1><i class="fa fa-fw fa-clock-o text-support2"></i> History</h1>
+											<p class="lead">Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+											<p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+										</div>
+										<div class="tab-pane" id="favorites1"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+											<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END LEFT TABS -->
+
+							<!-- START RIGHT TABS -->
+							<div class="col-md-6">
+								<div class="box tabs-right style-transparent">
+									<ul class="box-head nav nav-tabs text-center" data-toggle="tabs">
+										<li class="active"><a href="#profile"><i class="fa fa-lg fa-user"></i><br/><h4>Profile<br/><small>Personal details</small></h4></a></li>
+										<li><a href="#history"><i class="fa fa-lg fa-clock-o"></i><br/><h4>History<br/><small>About us</small></h4></a></li>
+									</ul>
+									<div class="box-body tab-content style-white">
+										<div class="tab-pane active" id="profile"><h3 class="text-light">Daniel <strong>Johnson</strong></h3>
+											<p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+											<dl class="dl-horizontal">
+												<dt>Description lists</dt>
+												<dd>A description list is perfect for defining terms.</dd>
+												<dt>Euismod</dt>
+												<dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+												<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+												<dt>Malesuada porta</dt>
+												<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+												<dt>Felis euismod semper eget lacinia</dt>
+												<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+											</dl>
+										</div>
+										<div class="tab-pane" id="history">
+											<h1><i class="fa fa-clock-o text-support2"></i> History</h1>
+											<p class="lead">Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+											<p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END RIGHT TABS -->
+
+						</div><!--end .row -->
+						<div class="row">
+							<!-- START JUSTIFIED TABS -->
+							<div class="col-md-6">
+								<div class="box">
+									<div class="box-head">
+										<ul class="nav nav-tabs nav-justified" data-toggle="tabs">
+											<li class="active"><a href="#profile1"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+											<li><a href="#preferences"><i class="fa fa-fw fa-gears"></i> Preferences</a></li>
+											<li><a href="#favorites"><i class="fa fa-fw fa-star"></i> Favorites</a></li>
+										</ul>
+									</div>
+									<div class="box-body tab-content">
+										<div class="tab-pane active" id="profile1"><p>Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Cu conceptam vituperata temporibus has.</p>
+										</div>
+										<div class="tab-pane" id="preferences"><p>Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Dicant vituperata consequuntur.</p>
+										</div>
+										<div class="tab-pane" id="favorites"><p>Duo semper accumsan ea, quidam convenire cum cu, oportere maiestatis incorrupte est eu. Soluta audiam timeam ius te, idque gubergren forensibus ad mel, persius urbanitas usu id. Civibus nostrum fabellas mea te, ne pri lucilius iudicabit. Ut cibo semper vituperatoribus vix, cum in error elitr. Vix molestiae intellegat omittantur an, nam cu modo ullum scriptorem.</p>
+											<p>Quod option numquam vel in, et fuisset delicatissimi duo, qui ut animal noluisse erroribus. Ea eum veniam audire. Per at postea mediocritatem, vim numquam aliquid eu, in nam sale gubergren. Dicant vituperata consequuntur at sea, mazim commodo</p>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END JUSTIFIED TABS -->
+
+							<!-- START FOOTER TABS -->
+							<div class="col-md-6">
+								<div class="box tabs-below">
+									<div class="box-body tab-content">
+										<div class="tab-pane active" id="home1"><p>Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et.</p></div>
+										<div class="tab-pane" id="about1"><p>Id illud voluptaria omittantur qui, te affert nostro mel. Omnis modus phaedrum an vim, pri ipsum quando no.</p></div>
+										<div class="tab-pane" id="contact1"><p>Omnis modus phaedrum an vim, pri ipsum quando no. Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt.</p></div>
+									</div>
+									<ul class="box-head nav nav-tabs" data-toggle="tabs">
+										<li class="active"><a href="#home1"><i class="fa fa-fw fa-home"></i> Home</a></li>
+										<li><a href="#about1"><i class="fa fa-fw fa-info"></i> About</a></li>
+										<li><a href="#contact1"><i class="fa fa-fw fa-phone"></i> Contact</a></li>
+									</ul>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END FOOTER TABS -->
+
+						</div><!--end .row -->
+						<div class="row">
+							<!-- START INLINE TABS -->
+							<div class="col-md-6">
+								<div class="box ">
+									<div class="box-head">
+										<header><h4 class="text-light">Inline <strong>tabs</strong></h4></header>
+									</div>
+									<div class="box-body">
+										<ul class="nav nav-tabs" data-toggle="tabs">
+											<li class="active"><a href="#inbox2"><i class="fa fa-fw fa-inbox"></i> Inbox</a></li>
+											<li><a href="#send2"><i class="fa fa-fw fa-forward"></i> Send</a></li>
+											<li><a href="#deleted2"><i class="fa fa-fw fa-trash-o"></i> Deleted</a></li>
+										</ul>
+										<div class="box-body tab-content style-white">
+											<div class="tab-pane active" id="inbox2"><p>Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et.</p></div>
+											<div class="tab-pane" id="send2"><p>Id illud voluptaria omittantur qui, te affert nostro mel. Omnis modus phaedrum an vim, pri ipsum quando no.</p></div>
+											<div class="tab-pane" id="deleted2"><p>Omnis modus phaedrum an vim, pri ipsum quando no. Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt.</p></div>
+										</div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END INLINE TABS -->
+
+							<!-- START TAB THEMES -->
+							<div class="col-md-6">
+								<div class="box">
+									<div class="box-head">
+										<header><h4 class="text-light">Themed header <strong>tabs</strong></h4></header>
+										<ul class="nav nav-tabs tabs-inverse pull-right" data-toggle="tabs">
+											<li class="active"><a href="#profile3"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+											<li><a href="#preferences3"><i class="fa fa-fw fa-gears"></i> Preferences</a></li>
+											<li><a href="#favorites3"><i class="fa fa-fw fa-star"></i> Favorites</a></li>
+										</ul>
+									</div>
+									<div class="box-body tab-content">
+										<div class="tab-pane active" id="profile3"><p>Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt, an sit harum primis persecuti, adipisci tacimates mediocrem sit et. Id illud voluptaria omittantur qui, te affert nostro mel. Omnis modus phaedrum an vim, pri ipsum quando no.</p>
+											<p>Eros facete ponderum et vix. Quo nisl pertinax at, mea ea ullum simul ponderum. Postulant definiebas ius et, quas voluptaria moderatius pro ex, ea augue aeque labitur mea. Cu quo explicari iracundia, et quo primis ceteros moderatius. Veniam ubique laboramus ut pri, cu mea causae docendi. Cum an tritani civibus, est quem error malorum ei, quod fuisset eu sed.</p>
+										</div>
+										<div class="tab-pane" id="preferences3"><p>Id illud voluptaria omittantur qui, te affert nostro mel. Omnis modus phaedrum an vim, pri ipsum quando no.</p></div>
+										<div class="tab-pane" id="favorites3"><p>Omnis modus phaedrum an vim, pri ipsum quando no. Cu conceptam vituperata temporibus has. Ad ius duis dissentiunt.</p></div>
+									</div>
+								</div><!--end .box -->
+							</div><!--end .col-md-6 -->
+							<!-- END TAB THEMES -->
+
+						</div><!--end .row -->
+					</div><!--end .section-body -->
+				</section>
+				<section>
+					<div class="section-header">
+						<h3 class="text-standard"><i class="fa fa-fw fa-arrow-circle-right text-gray-light"></i> Accordions</h3>
+					</div>
+					<div class="section-body">
+						<div class="row">
+							<!-- START STANDARD COLLAPSABLE -->
+							<div class="col-md-4">
+								<div class="panel-group" id="collapseable">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#collapseable" href="#collapseOne" class="">
+													Standard bootstrap collapsible #1
+												</a>
+											</h4>
+										</div>
+										<div id="collapseOne" class="panel-collapse in" style="height: auto;">
+											<div class="panel-body">
+												<p class="lead">A standard bootstrap collapseable can only be opened by clicking on the title.</p>
+												<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#collapseable" href="#collapseTwo" class="collapsed">
+													Standard bootstrap collapsible #2
+												</a>
+											</h4>
+										</div>
+										<div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h4 class="panel-title">
+												<a data-toggle="collapse" data-parent="#collapseable" href="#collapseThree" class="collapsed">
+													Standard bootstrap collapsible #3
+												</a>
+											</h4>
+										</div>
+										<div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+								</div><!--end .panel-group -->
+							</div><!--end .col-md-4 -->
+							<!-- END STANDARD COLLAPSABLE -->
+
+							<!-- START ACCORDION WITH RIGHT ARROWS -->
+							<div class="col-md-4">
+								<div class="panel-group accordion" id="accordion">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion" href="#accordionOne" class="">
+													Custom accordion collapsible #1 <i class="fa fa-angle-down pull-right"></i>
+												</a>
+											</h5>
+										</div>
+										<div id="accordionOne" class="panel-collapse in" style="height: auto;">
+											<div class="panel-body">
+												<p class="lead">An accordion can be opened by clicking on the bar and has rotating arrows.</p>
+												<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion" href="#accordionTwo" class="collapsed">
+													Custom accordion collapsible #2 <i class="fa fa-caret-down pull-right"></i>
+												</a>
+											</h5>
+										</div>
+										<div id="accordionTwo" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion" href="#accordionThree" class="collapsed">
+													Custom accordion collapsible #3 <i class="fa fa-chevron-down pull-right"></i>
+												</a>
+											</h5>
+										</div>
+										<div id="accordionThree" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+								</div><!--end .panel-group -->
+							</div><!--end .col-md-4 -->
+							<!-- END ACCORDION WITH RIGHT ARROWS -->
+
+							<!-- START ACCORDION WITH LEFT ARROWS -->
+							<div class="col-md-4">
+								<div class="panel-group accordion" id="accordion2">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion2" href="#accordionFour" class="">
+													<i class="fa fa-angle-down fa-fw"></i> Custom accordion collapsible #1
+												</a>
+											</h5>
+										</div>
+										<div id="accordionFour" class="panel-collapse in" style="height: auto;">
+											<div class="panel-body">
+												<p class="lead">An accordion can be opened by clicking on the bar and has rotating arrows.</p>
+												<p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion2" href="#accordionFive" class="collapsed">
+													<i class="fa fa-caret-down fa-fw"></i> Custom accordion collapsible #2
+												</a>
+											</h5>
+										</div>
+										<div id="accordionFive" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<h5 class="accordion-title">
+												<a data-toggle="collapse" data-parent="#accordion2" href="#accordionSix" class="collapsed">
+													<i class="fa fa-chevron-down fa-fw"></i> Custom accordion collapsible #3
+												</a>
+											</h5>
+										</div>
+										<div id="accordionSix" class="panel-collapse collapse" style="height: 0px;">
+											<div class="panel-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div><!--end .panel -->
+								</div><!--end .panel-group -->
+							</div><!--end .col-md-4 -->
+							<!-- END ACCORDION WITH LEFT ARROWS -->
+
+						</div><!--end .row -->
+					</div>
+				</section>
+			</div><!--end #content-->
+			<!-- END CONTENT -->
+
+		</div><!--end #base-->
+		<!-- END BASE -->
+
+		<!-- BEGIN JAVASCRIPT -->
+		<script src="../../assets/js/libs/jquery/jquery-1.11.0.min.js"></script>
+		<script src="../../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script src="../../assets/js/core/BootstrapFixed.js"></script>
+		<script src="../../assets/js/libs/bootstrap/bootstrap.min.js"></script>
+		<script src="../../assets/js/libs/spin.js/spin.min.js"></script>
+		<script src="../../assets/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="../../assets/js/core/App.js"></script>
+		<script src="../../assets/js/core/demo/Demo.js"></script>
+		<!-- END JAVASCRIPT -->
+
+	</body>
+</html>
