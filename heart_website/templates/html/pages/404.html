@@ -12,16 +12,16 @@
 
 		<!-- BEGIN STYLESHEETS -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/bootstrap.css?1403937764" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox.css?1403937765" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox_responsive.css?1403937765" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/font-awesome.min.css?1401481653" />
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
 		<!-- END STYLESHEETS -->
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1401481649"></script>
-		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1401481651"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/html5shiv.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/respond.min.js') }}"></script>
 		<![endif]-->
 	</head>
 	<body >
@@ -35,7 +35,7 @@
 				<div class="navbar-header">
 					<a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
 					<div class="navbar-brand">
-						<a class="main-brand" href="../dashboards/dashboard.html">
+						<a class="main-brand" href="{{ url_for('dashboard') }}">
 							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
 						</a>
 					</div><!--end .navbar-brand -->
@@ -44,7 +44,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="header-navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="../dashboards/dashboard.html"><i class="fa fa-home fa-lg"></i></a></li>
+						<li><a href="{{ url_for('dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
 					</ul><!--end .nav -->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
@@ -59,32 +59,12 @@
 								<li><a href="theme-5">Theme 5</a></li>
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
-						<li><span class="navbar-devider"></span></li>
+                        <li><span class="navbar-devider"></span></li>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-envelope"></i><sup class="badge badge-support2">2</sup></a>
-							<ul class="dropdown-menu animation-zoom">
-								<li class="dropdown-header">Today's messages</li>
-								<li>
-									<a class="alert alert-warning" href="javascript:void(0);">
-										<img class="pull-right img-circle dropdown-avatar" src="../../assets/img/avatar2.jpg?1401481650" alt="" />
-										<strong>Alex Anistor</strong><br/>
-										<small>Testing functionality...</small>
-									</a>
-								</li>
-								<li>
-									<a class="alert alert-info" href="javascript:void(0);">
-										<img class="pull-right img-circle dropdown-avatar" src="../../assets/img/avatar3.jpg?1401481654" alt="" />
-										<strong>Alicia Adell</strong><br/>
-										<small>Reviewing last changes...</small>
-									</a>
-								</li>
-								<li class="dropdown-header">Options</li>
-								<li><a href="login.html">View all messages <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
-								<li><a href="login.html">Mark as read <span class="pull-right"><i class="fa fa-arrow-right"></i></span></a></li>
-							</ul><!--end .dropdown-menu -->
-						</li><!--end .dropdown -->
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-dashboard"></i></a>
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-lg fa-dashboard"></i>
+                            <sup class="badge badge-support2">2</sup>
+                            </a>
 							<ul class="dropdown-menu animation-dock">
 								<li class="dropdown-header">Server load</li>
 								<li class="dropdown-progress">
@@ -118,14 +98,15 @@
 						</li><!--end .dropdown -->
 						<li><span class="navbar-devider"></span></li>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold" data-toggle="dropdown">Daniel Johnson <i class="fa fa-fw fa-angle-down"></i> <img class="img-circle" src="../../assets/img/avatar1.jpg?1401481655" alt="" /></a>
+							<a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold"
+                               data-toggle="dropdown">Gaurika Tyagi <i class="fa fa-fw fa-angle-down"></i>
+                                <img class="img-circle" src="{{ url_for('static', filename = 'assets/img/heart_beat.gif') }}" alt="" width="40" height="20"/>
+                            </a>
 							<ul class="dropdown-menu animation-slide">
 								<li class="dropdown-header">Config</li>
-								<li><a href="profile.html">My profile</a></li>
-								<li><a href="../../html/pages/blog/post.html">My blog <span class="badge badge-danger pull-right">16</span></a></li>
-								<li><a href="calendar.html">My appointments</a></li>
+								<li><a href="{{ url_for('profile') }}">My profile</a></li>
 								<li class="divider"></li>
-								<li><a href="login.html"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+								<li><a href="{{ url_for('login') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
 							</ul><!--end .dropdown-menu -->
 						</li><!--end .dropdown -->
 					</ul><!--end .nav -->
@@ -139,52 +120,39 @@
 		<!-- BEGIN BASE-->
 		<div id="base">
 
-						<!-- BEGIN SIDEBAR-->
+			<!-- BEGIN SIDEBAR-->
 			<div id="sidebar">
 				<div class="sidebar-back"></div>
 				<div class="sidebar-content">
 					<div class="nav-brand">
-						<a class="main-brand" href="../dashboards/dashboard.html">
+						<a class="main-brand" href="https://www.linkedin.com/in/gaurikatyagi">
 							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
 						</a>
 					</div>
-
-					<!-- BEGIN MENU SEARCH -->
-					<form class="sidebar-search" role="search">
-						<a href="javascript:void(0);"><i class="fa fa-search fa-fw search-icon"></i><i class="fa fa-angle-left fa-fw close-icon"></i></a>
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" class="form-control navbar-input" placeholder="Search...">
-								<span class="input-group-btn">
-									<button class="btn btn-equal" type="button"><i class="fa fa-search"></i></button>
-								</span>
-							</div>
-						</div>
-					</form>
-					<!-- END MENU SEARCH -->
 
 					<!-- BEGIN MAIN MENU -->
 					<ul class="main-menu">
 						<!-- Menu Dashboard -->
 						<li>
-							<a href="../dashboards/dashboard.html" >
+							<a href="{{ url_for('dashboard') }}" >
 								<i class="fa fa-home fa-fw"></i><span class="title">Dashboard</span>
 							</a>
 						</li><!--end /menu-item -->
+                        <li>
+                            <a href="{{ url_for('profile') }}" >
+
+                                <i class="fa fa-user fa-fw"></i><span class="title">User profile</span>
+                            </a>
+                        </li>
 						<!-- Menu Pages -->
 						<li>
 							<a href="javascript:void(0);">
-								<i class="fa fa-file fa-fw"></i><span class="title">Pages</span> <span class="expand-sign">+</span>
+								<i class="fa fa-file fa-fw"></i><span class="title">I'll be right back</span> <span class="expand-sign">+</span>
 							</a>
 							<!--start submenu -->
 							<ul>
-								<li><a href="profile.html" class="active">User profile<span class="badge">42</span></a></li>
-								<li><a href="../../html/pages/invoice.html" >Invoice</a></li>
-								<li><a href="calendar.html" >Calendar</a></li>
-								<li><a href="../../html/pages/pricing.html" >Pricing</a></li>
-								<li><a href="locked.html" >Lock screen</a></li>
-								<li><a href="../" >Login</a></li>
-								<li><a href="../" >Blank page</a></li>
+								<li><a href="{{ url_for('locked') }}" ><i class="fa fa-key fa-fw"></i>Lock screen</a></li>
+								<li><a href="{{ url_for('blank') }}" >Blank page</a></li>
 							</ul><!--end /submenu -->
 						</li><!--end /menu-item -->
                     </ul>
@@ -197,7 +165,7 @@
 				<!-- START 404 MESSAGE -->
 				<section>
 					<ol class="breadcrumb">
-						<li><a href="..//.html">home</a></li>
+						<li><a href="{{ url_for('dashboard') }}">home</a></li>
 						<li class="active">404</li>
 					</ol>
 					<div class="section-header">
@@ -211,7 +179,27 @@
 							</div><!--end .col-lg-12 -->
 						</div><!--end .row -->
 					</div><!--end .section-body -->
+                    <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+                        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                        <div class="row fileupload-buttonbar">
+                            <div class="col-lg-7">
+                                <!-- The fileinput-button span is used to style the file input field as button -->
+                                <div class="btn-group">
+                                    <span class="btn btn-success btn-rounded fileinput-button">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        <span>Add files...</span>
+                                    </span>
+                                    <button type="submit" class="btn btn-primary btn-rounded start">
+                                        <i class="glyphicon glyphicon-upload"></i>
+                                        <span>Start upload</span>
+                                    </button>
+                                </div>
+                                </div>
+                            </div>
+                        </form>
 				</section>
+
+
 				<!-- END 404 MESSAGE -->
 			</div><!--end #content-->
 			<!-- END CONTENT -->
@@ -220,14 +208,28 @@
 		<!-- END BASE -->
 
 		<!-- BEGIN JAVASCRIPT -->
-		<script src="../../assets/js/libs/jquery/jquery-1.11.0.min.js"></script>
-		<script src="../../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
-		<script src="../../assets/js/core/BootstrapFixed.js"></script>
-		<script src="../../assets/js/libs/bootstrap/bootstrap.min.js"></script>
-		<script src="../../assets/js/libs/spin.js/spin.min.js"></script>
-		<script src="../../assets/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
-		<script src="../../assets/js/core/App.js"></script>
-		<script src="../../assets/js/core/demo/Demo.js"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-1.11.0.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/BootstrapFixed.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/spin.js/spin.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/slimscroll/jquery.slimscroll.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
+
+        <script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/vendor/jquery.ui.widget.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/vendor/tmpl.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/vendor/load-image.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/vendor/jquery.blueimp-gallery.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.iframe-transport.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-process.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-image.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-audio.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-video.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-validate.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/jquery.fileupload-ui.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/blueimp-file-upload/main.js')}}"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>

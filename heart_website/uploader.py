@@ -4,7 +4,7 @@ import data_analysis
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = ["csv"]
-UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath( __file__ )), "statictictic")
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath( __file__ )), "static", "data")
 USERNAME = "admin"
 PASSWORD = "gt"
 SECRET_KEY = "development key"
@@ -39,7 +39,8 @@ def locked():
 
 @app.route("/profile", methods = ["GET"])
 def profile():
-    return render_template("html/pages/profile.html")
+    return redirect(url_for("csvfiles"))
+    # return render_template("html/pages/profile.html")
 
 @app.route("/blank", methods = ["GET", "POST"])
 def blank():
@@ -60,22 +61,22 @@ def login_check():
             session["logged_in"] = True
             session["file_name"] = None
             # flash(message = "You are now logged in")
-            return render_template("html/pages/profile.html")
+            return redirect(url_for("profile"))
 
 @app.route('/uploaded', methods=['GET', 'POST'])
 def uploaded():
     if request.method == 'POST':
         # check if the post request has the file part
         session["success"] = False
-        if 'submit_file' not in request.files:
+        if "file" not in request.files:
             flash("No file part")
-            return render_template("profile.html")
+            return render_template("html/pages/404.html")
         # if user does not select file, browser also
         # submit a empty part without filename
-        file = request.files["submit_file"]
+        file = request.files["file"]
         if file.filename == '':
             flash('No selected file')
-            return render_template("profile.html")
+            return render_template("html/pages/404.html")
         if file and allowed_file(file.filename):
             filename = file.filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -85,24 +86,24 @@ def uploaded():
             # return render_template("show_entries.html")
         else:
             flash("Wrong filetype")
-            return render_template("profile.html")
+            return render_template("html/pages/500.html")
 
 @app.route("/csvfiles")
 def csvfiles():
     file_names = find_csv_filenames()
     entries = [dict(file = index, text = row) for index, row in enumerate(file_names)]
     flash("File Uploaded")
-    return render_template("profile.html", entries = entries)
+    return render_template("html/pages/profile.html", entries = entries)
 
-@app.route("/analyze", methods = ["POST"])
-def analyze():
+@app.route("/analyze/<filename>", methods = ["POST"])
+def analyze(filename):
     # file_name = None
     if request.method == "POST":
-        file_name = request.form["file_name"]
-        session["file_name"] = file_name
-        return render_template("orig.html", data_file = url_for("static", filename=file_name))
+        # filename = request.form["filename"]
+        session["file_name"] = filename
+        return render_template("html/pages/orig.html", data_file = url_for("static/data", filename=filename))
     else:
-        return redirect(url_for("upload_file"))
+        return redirect(url_for("html/pages/profile.html"))
 
 # @app.route('/about')
 # def about():

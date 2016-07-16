@@ -11,17 +11,17 @@
 		<!-- END META -->
 
 		<!-- BEGIN STYLESHEETS -->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/bootstrap.css?1403937764" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox.css?1403937765" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/boostbox_responsive.css?1403937765" />
-		<link type="text/css" rel="stylesheet" href="../../assets/css/theme-default/font-awesome.min.css?1401481653" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
 		<!-- END STYLESHEETS -->
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1401481649"></script>
-		<script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1401481651"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/html5shiv.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/respond.min.js') }}"></script>
 		<![endif]-->
 	</head>
 	<body >
@@ -206,7 +206,7 @@
 						<div class="row">
 							<div class="col-lg-12 text-center">
 								<h1 class="text-huge">500 <i class="fa fa-exclamation-circle text-support2"></i></h1>
-								<h2 class="text-light">Oops! Something went wrong</h2>
+								<h2 class="text-light">Oops! Something went wrong. You did not upload the right file.</h2>
 							</div><!--end .col-lg-12 -->
 						</div><!--end .row -->
 					</div><!--end .section-body -->
@@ -220,14 +220,14 @@
 		<!-- END BASE -->
 
 		<!-- BEGIN JAVASCRIPT -->
-		<script src="../../assets/js/libs/jquery/jquery-1.11.0.min.js"></script>
-		<script src="../../assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
-		<script src="../../assets/js/core/BootstrapFixed.js"></script>
-		<script src="../../assets/js/libs/bootstrap/bootstrap.min.js"></script>
-		<script src="../../assets/js/libs/spin.js/spin.min.js"></script>
-		<script src="../../assets/js/libs/slimscroll/jquery.slimscroll.min.js"></script>
-		<script src="../../assets/js/core/App.js"></script>
-		<script src="../../assets/js/core/demo/Demo.js"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-1.11.0.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/BootstrapFixed.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/spin.js/spin.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/slimscroll/jquery.slimscroll.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
 		<!-- END JAVASCRIPT -->
 
 	</body>
