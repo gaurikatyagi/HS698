@@ -101,7 +101,8 @@ def analyze(filename):
     if request.method == "POST":
         # filename = request.form["filename"]
         session["file_name"] = filename
-        return render_template("html/pages/orig.html", data_file = url_for("static/data", filename=filename))
+        # return render_template("html/pages/orig.html", data_file = url_for("static/data", filename=filename))
+        return render_template("html/pages/orig.html", data_file = url_for("static", filename="data/"+filename))
     else:
         return redirect(url_for("html/pages/profile.html"))
 

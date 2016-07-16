@@ -2,7 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 	<head>
 		<title>HeartAnalyzer - Profile</title>
-
+        <style>
+            button {
+                background-color: unset;
+                border: none;
+            }
+        </style>
 		<!-- BEGIN META -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -245,8 +250,6 @@
 															<div class="row">
 																<div class="col-md-8">
 																	<div class="table-responsive">
-                                                                        <form action = "{{ url_for('dashboard')}}" method = post>
-                                                                        <br/>
 																		<table class="table table-bordered">
                                                                             <thead>
                                                                                 <tr>
@@ -263,13 +266,14 @@
                                                                                     <td>YY</td>
 																					<td>ZZ</td>
 																					<td>
-																						<a href="{{ url_for('analyze', filename=entry.text) }}"> <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> <span class="sr-only">Loading...</span></a>
-																					</td>
+                                                                                        <form action = "{{ url_for('analyze', filename=entry.text)}}" method = post>
+																						<button> <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> <span class="sr-only">Loading...</span></button>
+                                                                                        </form>
+                                                                                    </td>
 																				</tr>
                                                                                 {% endfor %}
 																			</tbody>
 																		</table>
-                                                                        </form>
 																	</div><!--end .table-responsive -->
 																</div><!--end .col-sm-8 -->
 																<div class="col-md-4">
