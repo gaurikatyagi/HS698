@@ -26,7 +26,7 @@ def home():
 
 @app.route("/login")
 def login():
-    session["logged_in"] = False
+    session.pop("logged_in", None)
     return render_template("html/pages/login.html")
 
 @app.route("/dashboard", methods = ["GET"])
@@ -41,7 +41,7 @@ def locked():
 def profile():
     return render_template("html/pages/profile.html")
 
-@app.route("/blank", methods = ["GET"])
+@app.route("/blank", methods = ["GET", "POST"])
 def blank():
     return render_template("html/pages/blank.html")
 
@@ -62,27 +62,20 @@ def login_check():
             # flash(message = "You are now logged in")
             return render_template("html/pages/profile.html")
 
-@app.route("/logout")
-def logout():
-    session.pop("logged_in", None)
-    session.pop("file_name", None)
-    flash(message = "You're now logged out")
-    return redirect(url_for("upload_file"))
-
-@app.route('/uploader', methods=['GET', 'POST'])
-def uploader():
+@app.route('/uploaded', methods=['GET', 'POST'])
+def uploaded():
     if request.method == 'POST':
         # check if the post request has the file part
         session["success"] = False
-        if 'file' not in request.files:
+        if 'submit_file' not in request.files:
             flash("No file part")
-            return render_template("file_upload.html")
+            return render_template("profile.html")
         # if user does not select file, browser also
         # submit a empty part without filename
-        file = request.files["file"]
+        file = request.files["submit_file"]
         if file.filename == '':
             flash('No selected file')
-            return render_template("file_upload.html")
+            return render_template("profile.html")
         if file and allowed_file(file.filename):
             filename = file.filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -92,14 +85,14 @@ def uploader():
             # return render_template("show_entries.html")
         else:
             flash("Wrong filetype")
-            return render_template("file_upload.html")
+            return render_template("profile.html")
 
 @app.route("/csvfiles")
 def csvfiles():
     file_names = find_csv_filenames()
     entries = [dict(file = index, text = row) for index, row in enumerate(file_names)]
     flash("File Uploaded")
-    return render_template("show_entries.html", entries = entries)
+    return render_template("profile.html", entries = entries)
 
 @app.route("/analyze", methods = ["POST"])
 def analyze():
@@ -107,7 +100,7 @@ def analyze():
     if request.method == "POST":
         file_name = request.form["file_name"]
         session["file_name"] = file_name
-        return render_template("orig.html", data_file = url_for("statictictic", filename=file_name))
+        return render_template("orig.html", data_file = url_for("static", filename=file_name))
     else:
         return redirect(url_for("upload_file"))
 
@@ -122,9 +115,9 @@ def moving_average():
     # print "Frequency of the data is: ", frequency
     filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
     roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
-    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "statictictic", "temp", "moving_avg.csv"),
+    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
                           index = False)
-    return render_template("data_and_average.html", data_file = url_for("statictictic", filename = "temp/moving_avg.csv"))
+    return render_template("data_and_average.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
 
 @app.route('/peaks')
 def r_complex():
@@ -133,14 +126,14 @@ def r_complex():
     # print "Frequency of the data is: ", frequency
     filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
     roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
-    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "statictictic", "moving_avg.csv"),
+    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "moving_avg.csv"),
                           index=False)
     data_analysis.fit_peaks(roll_mean_data, frequency)
     data_analysis.calc_frequency_measures(roll_mean_data, frequency)
     data_analysis.time_measures["bpm"] = (len(data_analysis.signal_measures["R_positions"]) / (len(roll_mean_data["hart"]) / frequency) * 60)
     R_positions = data_analysis.signal_measures["R_positions"]
     ybeat = data_analysis.signal_measures["R_values"]
-    return render_template("peaks.html", data_file=url_for("statictictic", filename="moving_avg.csv"))
+    return render_template("peaks.html", data_file=url_for("static", filename="moving_avg.csv"))
 
 if __name__ == '__main__':
     app.run(debug=True)

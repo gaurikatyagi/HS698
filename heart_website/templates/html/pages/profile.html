@@ -16,7 +16,9 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
-		<!-- END STYLESHEETS -->
+		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/wizard/wizard.css') }}" />
+
+        <!-- END STYLESHEETS -->
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -178,7 +180,7 @@
 									<div class="box-head">
 										<ul class="nav nav-tabs tabs-transparent" data-toggle="tabs">
 											<li class="active"><a href="#overview"><i class="fa fa-inbox"></i> Overview</a></li>
-											<li><a href="#editDetails"><i class="fa fa-edit"></i> Change details</a></li>
+											<li><a href="#editDetails"><i class="fa fa-upload"></i> Upload Files</a></li>
 										</ul>
 									</div>
 									<!-- END PROFILE TABS -->
@@ -191,7 +193,7 @@
 													<!-- START PROFILE SIDEBAR -->
 													<div class="col-sm-3 style-inverse">
 														<div class="holder">
-															<img class="img-rounded img-responsive" src="../../assets/img/img8.jpg?1401481655" alt="" />
+															<img class="img-rounded img-responsive" src="{{ url_for('static', filename = 'assets/img/heart_beat.gif') }}" alt="" />
 															<div class="stick-bottom-left">
 																<a class="btn btn-inverse btn-equal" data-toggle="email for queries" data-placement="top" data-original-title="tyagigaurika27@gmail.com"><i class="fa fa-envelope"></i></a>
 																<a class="btn btn-inverse btn-equal" data-toggle="gaurikatyagi" data-placement="top" data-original-title="Follow me"><i class="fa fa-github-square"></i></a>
@@ -203,13 +205,6 @@
 																<span class="text-xl text-light">Gaurika Tyagi</span><br/>
 																<span class="text-sm">Data Scientist at HeartAnalyzer</span>
 															</p>
-														</div>
-														<div class="box-body-darken style-inverse">
-															<ul class="nav nav-pills nav-stacked nav-transparent">
-																<li><a href="#"><span class="badge pull-right">42</span>Projects</a></li>
-																<li><a href="#">Friends</a></li>
-																<li><a href="#"><span class="badge pull-right">3</span>Messages</a></li>
-															</ul>
 														</div>
 														<div class="box-body style-inverse">
 															<address class="text-support5-alt">
@@ -237,10 +232,13 @@
 																	<p class="lead">Files in the system</p>
 																</div>
 																<div class="col-sm-4">
-																	<div class="pie-chart flot text-center">
-																		<div class="chart size-3 v-inline-middle" data-title="Site visits" data-color="#FBEED5,#2E383D"></div>
+                                                                    <div class="col-sm-3 text-center">
+                                                                        <div class="knob knob-support2 knob-gray-track size-4">
+                                                                            <input type="text" class="dial" value="56" data-angleOffset=-125 data-angleArc=250 data-readOnly=true>
+                                                                        </div>
+                                                                    </div>
+																		<div class="chart size-3 v-inline-middle" data-title="Male Female Ratio" data-color="#FBEED5,#2E383D"></div>
 																		<div class="legend v-inline-middle text-left"></div>
-																	</div>
 																</div>
 															</div>
 															<div class="row">&nbsp;</div><!-- Extra row gap-->
@@ -299,96 +297,124 @@
 
 										<!-- START PROFILE EDITOR -->
 										<div class="tab-pane" id="editDetails">
-											<div class="box-body style-white">
-												<div class="well">
-													<span class="label label-success"><i class="fa fa-comment"></i></span>
-													<span>Add a personal message here.</span>
-												</div>
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-														<div class="col-lg-1 col-md-2 col-sm-3">
-															<label for="email1" class="control-label">Email</label>
-														</div>
-														<div class="col-lg-11 col-md-10 col-sm-9">
-															<input type="email" name="email1" id="email1" class="form-control" placeholder="Email">
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-sm-6">
-															<div class="form-group">
-																<div class="col-lg-2 col-md-4 col-sm-6">
-																	<label for="password1" class="control-label">Password</label>
-																</div>
-																<div class="col-lg-10 col-md-8 col-sm-6">
-																	<input type="password" name="password1" id="password1" class="form-control" placeholder="Password">
-																	<p class="help-block">Use Alphanumeric characters.</p>
-																</div>
-															</div>
-														</div>
-														<div class="col-sm-6">
-															<div class="form-group">
-																<div class="col-lg-2 col-md-4 col-sm-6">
-																	<label for="repeatpassword1" class="control-label">Repeat</label>
-																</div>
-																<div class="col-lg-10 col-md-8 col-sm-6">
-																	<input type="password" name="repeatpassword1" id="repeatpassword1" class="form-control" placeholder="Repeat password">
-																	<p class="help-block">Retype your password.</p>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-lg-1 col-md-2 col-sm-3">
-															<label for="select1" class="control-label">Select</label>
-														</div>
-														<div class="col-lg-11 col-md-10 col-sm-9">
-															<select name="select1" id="select1" class="form-control">
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
-															</select>
-															<p class="help-block">This is supporting text for this field.</p>
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-lg-1 col-md-2 col-sm-3">
-															<label for="textarea1" class="control-label">
-																Textarea
-																<small>Info about this field</small>
-															</label>
-														</div>
-														<div class="col-lg-11 col-md-10 col-sm-9">
-															<textarea name="textarea1" id="textarea1" class="form-control" rows="3" placeholder="Textarea"></textarea>
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-lg-1 col-md-2 col-sm-3">
-															<label class="control-label">
-																Checkboxes
-															</label>
-														</div>
-														<div class="col-lg-11 col-md-10 col-sm-9">
-															<div class="checkbox">
-																<label>
-																	<input type="checkbox" id="cb1" > Check me out
-																</label>
-															</div>
-														</div>
-													</div>
-													<div class="form-footer col-lg-offset-1 col-md-offset-2 col-sm-offset-3">
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button type="submit" class="btn btn-default">Reset</button>
-													</div>
-												</form>
-											</div><!--end .box-body -->
-										</div><!--end .tab-pane -->
-										<!-- END PROFILE EDITOR -->
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="box">
+                                                        <div class="box-head">
+                                                            <header><h4 class="text-light"><i class="fa fa-check fa-fw"></i> File Upload <strong>Wizard</strong></h4></header>
+                                                        </div>
+                                                        <div class="well">
+                                                            <span class="label label-success"><i class="fa fa-comment"></i></span>
+                                                            <span>You may only upload '.csv' files in the Analyzer</span>
+												        </div>
+                                                        <div class="box-body no-padding1">
+                                                            <div id="rootwizard2" class="form-wizard form-wizard-horizontal">
+                                                                <form class="form-horizontal form-bordered form-validation" role="form" novalidate="novalidate"
+                                                                action="{{ url_for('blank') }}" method="post">
+                                                                    <div class="form-wizard-nav">
+                                                                        <div class="progress"><div class="progress-bar progress-bar-primary"></div></div>
+                                                                        <ul class="nav nav-justified">
+                                                                            <li class="active"><a href="#step1" data-toggle="tab"><span class="step">1</span> <span class="title">File Information</span></a></li>
+                                                                            <li><a href="#step2" data-toggle="tab"><span class="step">2</span> <span class="title">Patient Information</span></a></li>
+                                                                            <li><a href="#step3" data-toggle="tab"><span class="step">3</span> <span class="title">Upload File</span></a></li>
+                                                                        </ul>
+                                                                    </div><!--end .form-wizard-nav -->
+                                                                    <div class="tab-content">
+                                                                        <div class="tab-pane active" id="step1">
+                                                                            <br/><br/>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                                                                                    <label for="file_name" class="control-label">File Name</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="text" name="file_name" id="file_name" class="form-control" placeholder="File Name" required>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                																	<label for="record_number" class="control-label">Number of Records</label>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <input type="number" name="record_number" id="record_number" class="form-control" placeholder="#Number of Records">
+                                                                                    <p class="help-block">Use Numeric characters without commas.</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><!--end #step1 -->
+                                                                        <div class="tab-pane" id="step2">
+                                                                            <br/><br/>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                                                                                    <label for="patient_name" class="control-label">Patient Name</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                																	<input type="text" name="patient_name" id="patient_name" class="form-control" placeholder="Name of Patient who's heart beat is being analyzed">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                                                                                    <label for="lastname" class="control-label">Gender</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <div data-toggle="buttons">
+                                                                                        <label class="btn radio-inline btn-radio-primary active">
+                                                                                            <input type="radio" name="gender" id="option1" value="Male" checked=""> Male
+                                                                                        </label>
+                                                                                        <label class="btn radio-inline btn-radio-primary">
+                                                                                            <input type="radio" name="gender" id="option2" value="Female"> Female
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-md-3">
+                                                                                    <label class="control-label" name="dob" id="dob" >Date of Birth</label>
+                                                                                </div>
+                                                                                <div class="col-md-9">
+                                                                                    <div class='input-group control-width-normal' id='demo-date'>
+                                                                                        <input type="date" class="form-control" />
+                                                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><!--end #step2 -->
 
-									</div><!--end .tab-content -->
-								</div><!--end .box -->
-							</div><!--end .col-lg-12 -->
+                                                                        <div class="tab-pane" id="step3">
+                                                                            <br/><br/>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                                                                                    <label for="file_up" class="control-label">Upload File</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="file" name="file_up" id="file_up" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-sm-3">
+                                                                                    <label for="submit_file" class="control-label">Submit</label>
+                                                                                </div>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="submit" name="submit_file" id="submit_file" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><!--end #step3 -->
+                                                                    <ul class="pager wizard">
+                                                                        <li class="previous first"><a href="javascript:void(0);">First</a></li>
+                                                                        <li class="previous"><a href="javascript:void(0);">Previous</a></li>
+                                                                        <li class="next last"><a href="javascript:void(0);">Last</a></li>
+                                                                        <li class="next"><a href="javascript:void(0);">Next</a></li>
+                                                                    </ul>
+                                                                    </div>
+                                                                </form>
+                                                            </div><!--end #rootwizard -->
+                                                        </div><!--end .box-body -->
+                                                    </div><!--end .box -->
+                                                </div><!--end .col-lg-12 -->
+                                            </div><!--end .row -->
+						<!-- END VALIDATION WIZARD -->
+								        </div>
+                                    </div><!--end .box -->
+							    </div>
+                            </div><!--end .col-lg-12 -->
 						</div><!--end .row -->
 					</div><!--end .section-body -->
 				</section>
@@ -416,7 +442,18 @@
 		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoCharts.js')}}"></script>
 		<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
 		<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
-		<!-- END JAVASCRIPT -->
+
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoFormWizard.js')}}"></script>
+
+{#        <script src="{{ url_for('static', filename='assets/js/libs/bootstrap-datetimepicker/bootstrap-datetimepicker.js') }}"></script>#}
+        <script src="{{ url_for('static', filename='assets/js/core/demo/DemoFormComponents.js') }}"></script>
+
+
+
+        <!-- END JAVASCRIPT -->
 
 	</body>
 </html>
