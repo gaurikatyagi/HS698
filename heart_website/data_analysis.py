@@ -16,7 +16,7 @@ def read_data(filename):
     :param filename: String variable which contains the file name to be read
     :return: returns pandas dataframe containing the csv file
     """
-    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "statictictic", filename)
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "data", filename)
     print "Reading file: %s"%filename
     try:
         data = pd.read_csv(file_path) # We can not make index_col= 0 because the function detect_peaks() makes use of

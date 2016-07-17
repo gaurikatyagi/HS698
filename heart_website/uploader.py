@@ -100,7 +100,7 @@ def analyze(filename):
     # file_name = None
     if request.method == "POST":
         # filename = request.form["filename"]
-        session["file_name"] = filename
+        session["filename"] = filename
         # return render_template("html/pages/orig.html", data_file = url_for("static/data", filename=filename))
         return render_template("html/pages/orig.html", data_file = url_for("static", filename="data/"+filename))
     else:
@@ -112,14 +112,14 @@ def analyze(filename):
 
 @app.route('/moving_average', methods = ["POST"])
 def moving_average():
-    data = data_analysis.read_data(session["file_name"])
+    data = data_analysis.read_data(session["filename"])
     frequency = data_analysis.calc_freq_rate(data)
     # print "Frequency of the data is: ", frequency
     filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
     roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
     roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
                           index = False)
-    return render_template("data_and_average.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
+    return render_template("html/pages/data_and_average.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
 
 @app.route('/peaks')
 def r_complex():
