@@ -119,7 +119,7 @@ def moving_average():
     roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
     roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
                           index = False)
-    return render_template("html/pages/data_and_average.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
+    return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
 
 @app.route('/peaks')
 def r_complex():
