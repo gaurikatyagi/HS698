@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, url_for, flash, session, redirect
 import os
 import data_analysis
+import pandas as pd
+from flask import jsonify
+import csv
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = ["csv"]
@@ -15,9 +18,17 @@ def allowed_file(filename):
     return ('.' in filename) and (filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS)
 
 def find_csv_filenames( suffix= ".csv" ):
-    # path_to_dir = os.path.dirname(os.path.abspath(__file__))
     filenames = os.listdir(UPLOAD_FOLDER)
     return [ filename for filename in filenames if filename.endswith(suffix) ]
+
+def data_avg():
+    data = data_analysis.read_data(session["filename"])
+    frequency = data_analysis.calc_freq_rate(data)
+    filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
+    roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
+    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
+                          index = False)
+    return roll_mean_data, frequency
 
 @app.route('/')
 def home():
@@ -40,7 +51,6 @@ def locked():
 @app.route("/profile", methods = ["GET"])
 def profile():
     return redirect(url_for("csvfiles"))
-    # return render_template("html/pages/profile.html")
 
 @app.route("/blank", methods = ["GET", "POST"])
 def blank():
@@ -60,7 +70,6 @@ def login_check():
         else:
             session["logged_in"] = True
             session["file_name"] = None
-            # flash(message = "You are now logged in")
             return redirect(url_for("profile"))
 
 @app.route('/uploaded', methods=['GET', 'POST'])
@@ -78,12 +87,33 @@ def uploaded():
             flash('No selected file')
             return render_template("html/pages/404.html")
         if file and allowed_file(file.filename):
-            filename = file.filename
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # flash("File Uploaded")
+            # filename = file.filename
+            file_save_name = request.form["file_name"]
+            file_present = False
+            file_csv = open(UPLOAD_FOLDER + "/uploaded_info.csv", 'rb')
+            reader = csv.reader(file_csv)
+            for row in reader:
+                if row[0] == file_save_name:
+                    file_present = True
+                    break
+            file_csv.close()
+            comment = "File Uploaded"
+            if file_present == False:
+                reading_number = request.form["reading_number"]
+                patient_name = request.form["patient_name"]
+                gender = request.form["gender"]
+                dob = request.form.get("dob")
+                file_csv = open(UPLOAD_FOLDER+"/uploaded_info.csv", 'ab')
+                writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_save_name))
+                # writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
+                writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
+                file_csv.close()
+            else:
+                comment = "File Already Exists"
             session["success"] = True
+            session["comment"] = comment
             return redirect(url_for("csvfiles"))
-            # return render_template("show_entries.html")
         else:
             flash("Wrong filetype")
             return render_template("html/pages/500.html")
@@ -91,51 +121,59 @@ def uploaded():
 @app.route("/csvfiles")
 def csvfiles():
     file_names = find_csv_filenames()
-    entries = [dict(file = index, text = row) for index, row in enumerate(file_names)]
+    # entries = [dict(file = index, text = row) for index, row in enumerate(file_names)]
+    file_info = os.path.join(UPLOAD_FOLDER, "uploaded_info.csv")
+    data = pd.read_csv(file_info)
+    # print data.head()
+    file_names = data["filename"]
+    number_readings = data["reading_number"]
+    patient_name = data["patient_name"]
+    print patient_name
+
+
     flash("File Uploaded")
-    return render_template("html/pages/profile.html", entries = entries)
+    if "comment" in session:
+        return render_template("html/pages/profile.html", patient_name = patient_name,
+                               number_readings = number_readings, file_names = file_names, comment = session["comment"])
+    else:
+        return render_template("html/pages/profile.html", patient_name=patient_name,
+                               number_readings=number_readings, file_names=file_names)
 
 @app.route("/analyze/<filename>", methods = ["POST"])
 def analyze(filename):
-    # file_name = None
     if request.method == "POST":
-        # filename = request.form["filename"]
         session["filename"] = filename
-        # return render_template("html/pages/orig.html", data_file = url_for("static/data", filename=filename))
-        return render_template("html/pages/orig.html", data_file = url_for("static", filename="data/"+filename))
+        data = data_avg()
+        return redirect(url_for("peaks"))
     else:
-        return redirect(url_for("html/pages/profile.html"))
-
-# @app.route('/about')
-# def about():
-#     return render_template('about.html')
+        return render_template(url_for("html/pages/profile.html"))
 
 @app.route('/moving_average', methods = ["POST"])
 def moving_average():
-    data = data_analysis.read_data(session["filename"])
-    frequency = data_analysis.calc_freq_rate(data)
-    # print "Frequency of the data is: ", frequency
-    filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
-    roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
-    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
-                          index = False)
-    return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"))
+    data = data_avg()
+    return redirect(url_for("peaks"))
 
-@app.route('/peaks')
-def r_complex():
-    data = data_analysis.read_data(session["file_name"])
-    frequency = data_analysis.calc_freq_rate(data)
-    # print "Frequency of the data is: ", frequency
-    filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
-    roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
-    roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "moving_avg.csv"),
-                          index=False)
+@app.route('/peaks', methods = ["GET", "POST"])
+def peaks():
+    roll_mean_data, frequency = data_avg()
     data_analysis.fit_peaks(roll_mean_data, frequency)
     data_analysis.calc_frequency_measures(roll_mean_data, frequency)
     data_analysis.time_measures["bpm"] = (len(data_analysis.signal_measures["R_positions"]) / (len(roll_mean_data["hart"]) / frequency) * 60)
     R_positions = data_analysis.signal_measures["R_positions"]
     ybeat = data_analysis.signal_measures["R_values"]
-    return render_template("peaks.html", data_file=url_for("static", filename="moving_avg.csv"))
+    bpm = data_analysis.time_measures["bpm"]
+    return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"),
+                           bpm = bpm, frequency = frequency)
+
+@app.route('/delete/<filename>/<index>', methods = ["POST"])
+def delete(filename, index):
+    file_remove_path = os.path.join(UPLOAD_FOLDER, filename)
+    # os.remove("aa.txt")
+    file_csv = open(UPLOAD_FOLDER + "/uploaded_info.csv", 'ab')
+    writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
+    writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
+    file_csv.close()
+    return jsonify(filename, index, file_remove_path)
 
 if __name__ == '__main__':
     app.run(debug=True)
