@@ -1,0 +1,1 @@
+Flask==0.10.1numpy==1.11.0pandas==0.18.1scipy==0.17.1
