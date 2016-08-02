@@ -238,26 +238,26 @@
                                         <div class="top-layer">
                                             <span class="text-lg text-bolder">Frequency of <br/>Measurement</span><br/>
                                             <br/>
-                                            <span><h4 align="center">{{'%d' %frequency|int|round }}</h4></span>
+                                            <span><h4 align="center">{{'%d' %frequency|int|round }}Hz</h4></span>
                                         </div>
                                     </div>
                                     <div class="box-head style-body no-padding">
                                         <div class="col-lg-4 text-gray-light">
                                             <header>
-                                                <h4 class="text-bold">645</h4>
-                                                <small>Minimum Heart Beat</small>
+                                                <h5 class="text-bold"> <60 </h5>
+                                                <small>Bradycardia</small>
                                             </header>
                                         </div>
                                         <div class="col-lg-4 text-gray-light">
                                             <header>
-                                                <h4 class="text-bold">890</h4>
-                                                <small>Average Heart Beat</small>
+                                                <h5 class="text-bold"> 60-100 </h5>
+                                                <small>Regular for Healthy, at Rest Individuals</small>
                                             </header>
                                         </div>
                                         <div class="col-lg-4 text-gray-light">
                                             <header>
-                                                <h4 class="text-bold">8745</h4>
-                                                <small>Maximum Heart Beat</small>
+                                                <h5 class="text-bold">>100</h5>
+                                                <small>Tachycardia</small>
                                             </header>
                                         </div>
                                     </div>
@@ -401,7 +401,7 @@
                 .attr("y", 2)
                 .attr("dy", "-3.91em")
                 .style("text-anchor", "end")
-                .text("Heart Beat Values");
+                .text("Heart Beat Values (mV)");
 
         var beat_type = svg.selectAll(".beat_type")
                 .data(cities)

@@ -4,6 +4,7 @@ import data_analysis
 import pandas as pd
 from flask import jsonify
 import csv
+import fileinput, sys
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = ["csv"]
@@ -106,7 +107,7 @@ def uploaded():
                 file_csv = open(UPLOAD_FOLDER+"/uploaded_info.csv", 'ab')
                 writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_save_name))
-                # writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
+                writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
                 writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
                 file_csv.close()
             else:
@@ -165,15 +166,17 @@ def peaks():
     return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"),
                            bpm = bpm, frequency = frequency)
 
-@app.route('/delete/<filename>/<index>', methods = ["POST"])
-def delete(filename, index):
+@app.route('/delete/<filename>/<index_val>', methods = ["POST"])
+def delete(filename, index_val):
     file_remove_path = os.path.join(UPLOAD_FOLDER, filename)
-    # os.remove("aa.txt")
-    file_csv = open(UPLOAD_FOLDER + "/uploaded_info.csv", 'ab')
-    writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
-    writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
-    file_csv.close()
-    return jsonify(filename, index, file_remove_path)
+    os.remove(file_remove_path)
+    file_info = pd.read_csv(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"))
+    os.remove(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"))
+    file_info = file_info.drop(file_info.index[[index_val]])
+    file_info.reindex()
+    file_info.to_csv(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"))
+    # return jsonify(filename, index_val, file_remove_path)
+    return redirect(url_for("csvfiles"))
 
 if __name__ == '__main__':
     app.run(debug=True)
