@@ -1,317 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Heart Analyzer - Dashboard</title>
+<head>
+    <title>Heart Analyzer - Dashboard</title>
 
-		<!-- BEGIN META -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="your,keywords">
-		<meta name="description" content="Short explanation about this website">
-		<!-- END META -->
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+    <!-- END META -->
 
-		<!-- BEGIN STYLESHEETS -->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
-		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/bootstrap.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/jquery-ui/jquery-ui-boostbox.css') }}" />
-		<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/fullcalendar/fullcalendar.css') }}" />
-		<!-- END STYLESHEETS -->
+    <!-- BEGIN STYLESHEETS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,300,400,600,700,800' rel='stylesheet' type='text/css'/>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/bootstrap.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/font-awesome.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='assets/css/theme-default/boostbox_responsive.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/jquery-ui/jquery-ui-boostbox.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='assets/css/theme-default/libs/fullcalendar/fullcalendar.css') }}" />
+    <!-- END STYLESHEETS -->
 
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
 		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/html5shiv.js?1401481649') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='assets/js/libs/utils/respond.min.js?1401481651') }}"></script>
 		<![endif]-->
-	</head>
-	<body class="body-striped">
+</head>
+<body class="body-striped">
 
-		<!-- BEGIN HEADER-->
-		<header id="header">
+<!-- BEGIN HEADER-->
+<header id="header">
 
-			<!-- BEGIN NAVBAR -->
-			<nav class="navbar navbar-default" role="navigation">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
-					<div class="navbar-brand">
-						<a class="main-brand" href="{{ url_for('dashboard') }}">
-							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
-						</a>
-					</div><!--end .navbar-brand -->
-					<a class="btn btn-transparent btn-equal navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse"><i class="fa fa-wrench fa-lg"></i></a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="header-navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="{{ url_for('dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
-					</ul><!--end .nav -->
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-flask"></i></a>
-							<ul class="dropdown-menu animation-slide theme-selector">
-								<li class="dropdown-header">Themes</li>
-								<li><a href="theme-default">Theme default</a></li>
-								<li><a href="theme-1">Theme 1</a></li>
-								<li><a href="theme-2">Theme 2</a></li>
-								<li><a href="theme-3">Theme 3</a></li>
-								<li><a href="theme-4">Theme 4</a></li>
-								<li><a href="theme-5">Theme 5</a></li>
-							</ul><!--end .dropdown-menu -->
-						</li><!--end .dropdown -->
-						<li><span class="navbar-devider"></span></li>
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-lg fa-dashboard"></i>
-                            <sup class="badge badge-support2">2</sup>
+    <!-- BEGIN NAVBAR -->
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="btn btn-transparent btn-equal btn-menu" href="javascript:void(0);"><i class="fa fa-bars fa-lg"></i></a>
+            <div class="navbar-brand">
+                <a class="main-brand" href="{{ url_for('dashboard') }}">
+                    <h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
+                </a>
+            </div><!--end .navbar-brand -->
+            <a class="btn btn-transparent btn-equal navbar-toggle" data-toggle="collapse" data-target="#header-navbar-collapse"><i class="fa fa-wrench fa-lg"></i></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="header-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
+            </ul><!--end .nav -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-flask"></i></a>
+                    <ul class="dropdown-menu animation-slide theme-selector">
+                        <li class="dropdown-header">Themes</li>
+                        <li><a href="theme-default">Theme default</a></li>
+                        <li><a href="theme-1">Theme 1</a></li>
+                        <li><a href="theme-2">Theme 2</a></li>
+                        <li><a href="theme-3">Theme 3</a></li>
+                        <li><a href="theme-4">Theme 4</a></li>
+                        <li><a href="theme-5">Theme 5</a></li>
+                    </ul><!--end .dropdown-menu -->
+                </li><!--end .dropdown -->
+                <li><span class="navbar-devider"></span></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-lg fa-dashboard"></i>
+                        <sup class="badge badge-support2">2</sup>
+                    </a>
+                    <ul class="dropdown-menu animation-dock">
+                        <li class="dropdown-header">Server load</li>
+                        <li class="dropdown-progress">
+                            <a href="javascript:void(0);">
+                                <div class="dropdown-label">
+                                    <span class="text-light">Server load <strong>Today</strong></span>
+                                    <strong class="pull-right">93%</strong>
+                                </div>
+                                <div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
                             </a>
-							<ul class="dropdown-menu animation-dock">
-								<li class="dropdown-header">Server load</li>
-								<li class="dropdown-progress">
-									<a href="javascript:void(0);">
-										<div class="dropdown-label">
-											<span class="text-light">Server load <strong>Today</strong></span>
-											<strong class="pull-right">93%</strong>
-										</div>
-										<div class="progress"><div class="progress-bar progress-bar-danger" style="width: 93%"></div></div>
-									</a>
-								</li><!--end .dropdown-progress -->
-								<li class="dropdown-progress">
-									<a href="javascript:void(0);">
-										<div class="dropdown-label">
-											<span class="text-light">Server load <strong>Yesterday</strong></span>
-											<strong class="pull-right">30%</strong>
-										</div>
-										<div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
-									</a>
-								</li><!--end .dropdown-progress -->
-								<li class="dropdown-progress">
-									<a href="javascript:void(0);">
-										<div class="dropdown-label">
-											<span class="text-light">Server load <strong>Lastweek</strong></span>
-											<strong class="pull-right">74%</strong>
-										</div>
-										<div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
-									</a>
-								</li><!--end .dropdown-progress -->
-							</ul><!--end .dropdown-menu -->
-						</li><!--end .dropdown -->
-						<li><span class="navbar-devider"></span></li>
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold"
-                               data-toggle="dropdown">Gaurika Tyagi <i class="fa fa-fw fa-angle-down"></i>
-                                <img class="img-circle" src="{{ url_for('static', filename = 'assets/img/heart_beat.gif') }}" alt="" width="40" height="20"/>
+                        </li><!--end .dropdown-progress -->
+                        <li class="dropdown-progress">
+                            <a href="javascript:void(0);">
+                                <div class="dropdown-label">
+                                    <span class="text-light">Server load <strong>Yesterday</strong></span>
+                                    <strong class="pull-right">30%</strong>
+                                </div>
+                                <div class="progress"><div class="progress-bar progress-bar-success" style="width: 30%"></div></div>
                             </a>
-							<ul class="dropdown-menu animation-slide">
-								<li class="dropdown-header">Config</li>
-								<li><a href="{{ url_for('profile') }}">My profile</a></li>
-								<li class="divider"></li>
-								<li><a href="{{ url_for('login') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
-							</ul><!--end .dropdown-menu -->
-						</li><!--end .dropdown -->
-					</ul><!--end .nav -->
-				</div><!--end #header-navbar-collapse -->
-			</nav>
-			<!-- END NAVBAR -->
-
-		</header>
-		<!-- END HEADER-->
-
-		<!-- BEGIN BASE-->
-		<div id="base">
-
-			<!-- BEGIN SIDEBAR-->
-			<div id="sidebar">
-				<div class="sidebar-back"></div>
-				<div class="sidebar-content">
-					<div class="nav-brand">
-						<a class="main-brand" href="https://www.linkedin.com/in/gaurikatyagi">
-							<h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
-						</a>
-					</div>
-
-					<!-- BEGIN MAIN MENU -->
-					<ul class="main-menu">
-						<!-- Menu Dashboard -->
-						<li>
-							<a href="{{ url_for('dashboard') }}" >
-								<i class="fa fa-home fa-fw"></i><span class="title">Dashboard</span>
-							</a>
-						</li><!--end /menu-item -->
-                        <li>
-                            <a href="{{ url_for('profile') }}" >
-
-                                <i class="fa fa-user fa-fw"></i><span class="title">User profile</span>
+                        </li><!--end .dropdown-progress -->
+                        <li class="dropdown-progress">
+                            <a href="javascript:void(0);">
+                                <div class="dropdown-label">
+                                    <span class="text-light">Server load <strong>Lastweek</strong></span>
+                                    <strong class="pull-right">74%</strong>
+                                </div>
+                                <div class="progress"><div class="progress-bar progress-bar-warning" style="width: 74%"></div></div>
                             </a>
-                        </li>
-						<!-- Menu Pages -->
-						<li>
-							<a href="javascript:void(0);">
-								<i class="fa fa-file fa-fw"></i><span class="title">I'll be right back</span> <span class="expand-sign">+</span>
-							</a>
-							<!--start submenu -->
-							<ul>
-								<li><a href="{{ url_for('locked') }}" ><i class="fa fa-key fa-fw"></i>Lock screen</a></li>
-								<li><a href="{{ url_for('blank') }}" >Blank page</a></li>
-							</ul><!--end /submenu -->
-						</li><!--end /menu-item -->
-                    </ul>
-                </div><!-- Menu Tables -->
-            </div><!--end #sidebar-->
-            <!-- END SIDEBAR -->
+                        </li><!--end .dropdown-progress -->
+                    </ul><!--end .dropdown-menu -->
+                </li><!--end .dropdown -->
+                <li><span class="navbar-devider"></span></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="navbar-profile dropdown-toggle text-bold"
+                       data-toggle="dropdown">Gaurika Tyagi <i class="fa fa-fw fa-angle-down"></i>
+                        <img class="img-circle" src="{{ url_for('static', filename = 'assets/img/heart_beat.gif') }}" alt="" width="40" height="20"/>
+                    </a>
+                    <ul class="dropdown-menu animation-slide">
+                        <li class="dropdown-header">Config</li>
+                        <li><a href="{{ url_for('profile') }}">My profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url_for('login') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                    </ul><!--end .dropdown-menu -->
+                </li><!--end .dropdown -->
+            </ul><!--end .nav -->
+        </div><!--end #header-navbar-collapse -->
+    </nav>
+    <!-- END NAVBAR -->
 
-			<!-- BEGIN CONTENT-->
-			<div id="content">
-				<section>
-					<div class="section-header">
-						<h3 class="text-standard"><i class="fa fa-fw fa-arrow-circle-right text-gray-light"></i> Dashboard <small>Welcome Gaurika Tyagi</small></h3>
-					</div>
-				</section>
-				<section>
-					<div class="section-body">
-						<div class="row">
+</header>
+<!-- END HEADER-->
 
-							<!-- BEGIN TODO LIST -->
-							<div class="col-md-6">
-								<div class="box">
-									<div class="box-head box-head-lg">
-										<header>
-											<h3 class="text-light text-support2"><strong>Calendar</strong></h3>
-										</header>
-									</div>
-									<div class="box-body no-padding">
-                                        <div class="col-lg-12">
-								<div class="box box-tiles style-support3">
-									<div class="row">
-										<div class="col-md-3">
-											<div class="box-body-darken small-padding style-support3" style="width: 528px"> </div>
-											<div class="force-padding" >
-												<h1 class="text-light selected-day">&nbsp;</h1>
-												<h3 class="text-light selected-date">&nbsp;</h3>
-											</div>
-                                            <div class="box-body-darken small-padding style-support3" style="width: 528px"> </div>
-										</div><!--end .col-md-3 -->
-										<div class="col-md-9 style-white" style="display: none">
-											<div id="calendar"></div>
-										</div><!--end .col-md-9 -->
-									</div><!--end .row -->
-								</div><!--end .box -->
-							</div><!--end .col-lg-12 -->
-									</div><!--end .box-body -->
-								</div><!--end .box -->
-							</div><!--end .col-lg-3 -->
+<!-- BEGIN BASE-->
+<div id="base">
 
-							<!-- BEGIN TABBAR -->
-							<div class="col-md-6">
-								<div class="box tabs-below">
-									<div class="box-body no-padding tab-content">
-										<div class="tab-pane force-padding style-support5" id="tab-sales">
-											<div id="sales-chart" class="flot height-5" data-title="Prdouct sales"></div>
-										</div>
-										<div class="tab-pane force-padding active" id="pane-birthdays">
-											<div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
-												<div class="carousel-inner">
-													<div class="item active">
-														<div class="row">
-															<div class="col-md-5 text-center">
-																<img class="img-circle" src="{{ url_for('static', filename='assets/img/images.png')}}" alt="" />
-															</div>
-															<div class="col-md-7">
-																<p class="text-support5">
-																	<span class="text-xl text-bold">Gaurika Tyagi</span><br>
-																</p>
-																<ul class="list-unstyled list-extra-spacing">
-																	<li>
+    <!-- BEGIN SIDEBAR-->
+    <div id="sidebar">
+        <div class="sidebar-back"></div>
+        <div class="sidebar-content">
+            <div class="nav-brand">
+                <a class="main-brand" href="https://www.linkedin.com/in/gaurikatyagi">
+                    <h3 class="text-light text-white"><span>Heart<strong>Analyzer</strong> </span><i class="fa fa-heart"></i></h3>
+                </a>
+            </div>
+
+            <!-- BEGIN MAIN MENU -->
+            <ul class="main-menu">
+                <!-- Menu Dashboard -->
+                <li>
+                    <a href="{{ url_for('dashboard') }}" >
+                        <i class="fa fa-home fa-fw"></i><span class="title">Dashboard</span>
+                    </a>
+                </li><!--end /menu-item -->
+                <li>
+                    <a href="{{ url_for('profile') }}" >
+
+                        <i class="fa fa-user fa-fw"></i><span class="title">User profile</span>
+                    </a>
+                </li>
+                <!-- Menu Pages -->
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-file fa-fw"></i><span class="title">I'll be right back</span> <span class="expand-sign">+</span>
+                    </a>
+                    <!--start submenu -->
+                    <ul>
+                        <li><a href="{{ url_for('locked') }}" ><i class="fa fa-key fa-fw"></i>Lock screen</a></li>
+                        <li><a href="{{ url_for('blank') }}" >Blank page</a></li>
+                    </ul><!--end /submenu -->
+                </li><!--end /menu-item -->
+            </ul>
+        </div><!-- Menu Tables -->
+    </div><!--end #sidebar-->
+    <!-- END SIDEBAR -->
+
+    <!-- BEGIN CONTENT-->
+    <div id="content">
+        <section>
+            <div class="section-header">
+                <h3 class="text-standard"><i class="fa fa-fw fa-arrow-circle-right text-gray-light"></i> Dashboard <small>Welcome Gaurika Tyagi</small></h3>
+            </div>
+        </section>
+        <section>
+            <div class="section-body">
+                <div class="row">
+
+                    <div class="row box-body-darken style-support1">
+                        <div class="col-sm-9">
+                            <div class="box-body style-inverse">
+                                <h2><span>Heart<strong>Analyzer</strong> </span></h2>
+                                <div class="text-muted">Methodology</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BEGIN TODO LIST -->
+                    <div class="col-md-6">
+                        <!-- START BLOG POST TEXT -->
+                        <div class="col-md-9">
+                            <article class="style-white">
+                                <div class="box-body">
+                                    <p class="lead">The heart rate comprises of important evidence about a person’s health. The measure of beats per minute, physical fitness, breathing, short-term blood pressure, body temperature and hormonal blood pressure (long term) can be deciphered from a person’s heart rate. Brain consumes up to one fourth of the glucose and oxygen, thus the heart rate may also be used to unveil mental activity; If the brain activity escalates, the heart is required to work harder to continue providing.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div><!--end .col-lg-3 -->
+
+                    <!-- BEGIN TABBAR -->
+                    <div class="col-md-6">
+                        <div class="box tabs-below">
+                            <div class="box-body no-padding tab-content">
+                                <div class="tab-pane force-padding style-support5" id="tab-sales">
+                                    <div id="sales-chart" class="flot height-5" data-title="Prdouct sales"></div>
+                                </div>
+                                <div class="tab-pane force-padding active" id="pane-birthdays">
+                                    <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="item active">
+                                                <div class="row">
+                                                    <div class="col-md-5 text-center">
+                                                        <img class="img-circle" src="{{ url_for('static', filename='assets/img/images.png')}}" alt="" />
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <p class="text-support5">
+                                                            <span class="text-xl text-bold">{{ patient_name[0] }}</span><br>
+                                                        </p>
+                                                        <ul class="list-unstyled list-extra-spacing">
+                                                            <li>
 																		<span class="fa-stack text-support1">
 																			<i class="fa fa-circle fa-stack-2x"></i>
 																			<i class="fa fa-gift fa-stack-1x fa-inverse"></i>
 																		</span>
-																		<span class="text-sm">May 27, 1991</span>
-																	</li>
-																	<li>
+                                                                <span class="text-sm">{{ dob[0] }}</span>
+                                                            </li>
+                                                            <li>
+                                                                <script type="text/javascript">
+                                                                    function geticon(){
+                                                                        if( dob[0] == "Male" ){
+                                                                            document.write("fa fa-male fa-stack-1x fa-inverse")
+                                                                        }else {
+                                                                            document.write("fa fa-female fa-stack-1x fa-inverse")
+                                                                        }
+                                                                    };
+                                                                </script>
 																		<span class="fa-stack text-support1">
 																			<i class="fa fa-circle fa-stack-2x"></i>
-																			<i class="fa fa-location-arrow fa-stack-1x fa-inverse"></i>
+                                                                            <i class="fa fa-asterisk fa-stack-1x fa-inverse"></i>
 																		</span>
-																		<span class="text-sm">621 Ave, San Francisco</span>
-																	</li>
-																	<li>
+                                                                <span class="text-sm">{{ gender[0] }}</span>
+                                                            </li>
+                                                            <li>
 																		<span class="fa-stack text-support1">
 																			<i class="fa fa-circle fa-stack-2x"></i>
-																			<i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+																			<i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
 																		</span>
-																		<span class="text-sm">tyagigaurika27@gmail.com</span>
-																	</li>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-												<a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
-													<span class="glyphicon glyphicon-chevron-left"></span>
-												</a>
-												<a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
-													<span class="glyphicon glyphicon-chevron-right"></span>
-												</a>
-											</div>
-										</div>
-										<div class="tab-pane height-6 force-padding" id="pane-image">
-{#											<div class="img-backdrop" style="background-image: url('../../assets/img/img1.jpg')">#}
-											<div class="img-backdrop" style= background-image: {{url_for('static', filename = 'assets/img/heart_beat.gif')}})>
-											</div>
-											<div class="holder">
-												<h2 class="text-light text-white">Full-sized <strong>backdrop image</strong></h2>
-											</div>
-										</div>
-									</div>
-									<ul class="box-head nav nav-tabs nav-justified style-support5" data-toggle="tabs">
-										<li><a href="#tab-sales"><span class="text-xl">1282</span><br/>Sales</a></li>
-										<li class="active"><a href="#pane-birthdays"><span class="text-xl">3</span><br/>Birthdays</a></li>
-										<li><a href="#pane-image"><span class="text-xl">31</span><br/>Images</a></li>
-									</ul>
-								</div>
-							</div>
-							<!-- END TABBAR -->
+                                                                <span class="text-sm">{{ filename[0] }}</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% for index in range(1, filename|length) %}
+                                                <div class="item ">
+                                                    <div class="row">
+                                                        <div class="col-md-5 text-center">
+                                                            <img class="img-circle" src="{{ url_for('static', filename='assets/img/images.png')}}" alt="" />
+                                                        </div>
+                                                        <div class="col-md-7">
+                                                            <p class="text-support5">
+                                                                <span class="text-xl text-bold">{{ patient_name[index] }}</span><br>
+                                                            </p>
+                                                            <ul class="list-unstyled list-extra-spacing">
+                                                                <li>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+																			<i class="fa fa-gift fa-stack-1x fa-inverse"></i>
+																		</span>
+                                                                    <span class="text-sm">{{ dob[index] }}</span>
+                                                                </li>
+                                                                <li>
+                                                                    <script type="text/javascript">
+                                                                        function geticon(){
+                                                                            if( dob[index] == "Male" ){
+                                                                                document.write("fa fa-male fa-stack-1x fa-inverse")
+                                                                            }else {
+                                                                                document.write("fa fa-female fa-stack-1x fa-inverse")
+                                                                            }
+                                                                        };
+                                                                    </script>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+                                                                            <i class="fa fa-asterisk fa-stack-1x fa-inverse"></i>
+																		</span>
+                                                                    <span class="text-sm">{{ gender[index] }}</span>
+                                                                </li>
+                                                                <li>
+																		<span class="fa-stack text-support1">
+																			<i class="fa fa-circle fa-stack-2x"></i>
+																			<i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
+																		</span>
+                                                                    <span class="text-sm">{{ filename[index] }}</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane height-6 force-padding" id="pane-image">
+                                    <div class="box">
+                                        <div class="box-head box-head-lg">
+                                            <header>
+                                                <h3 class="text-light text-support2"><strong>Calendar</strong></h3>
+                                            </header>
+                                        </div>
+                                        <div class="box-body no-padding">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h1 class="text-light selected-day" align="center" style="width: 500px">&nbsp;</h1>
+                                                        <h3 class="text-light selected-date" align="center" style="width: 500px">&nbsp;</h3>
+                                                    </div><!--end .col-md-3 -->
+                                                    <div class="col-md-10 style-white" align="center">
+                                                        <div id="calendar"></div>
+                                                    </div><!--end .col-md-9 -->
+                                                </div><!--end .row -->
+                                            </div><!--end .col-lg-12 -->
+                                        </div><!--end .box-body -->
+                                    </div><!--end .box -->
+                                </div>
+                            </div>
+                            <ul class="box-head nav nav-tabs nav-justified style-support5" data-toggle="tabs">
+                                <li class="active"><a href="#pane-birthdays"><span class="text-xl">{{ filename|length }}</span><br/>Files</a></li>
+                                <li><a href="#pane-image"><span class="text-xl"><span class="text-light selected-day">&nbsp;</span></span><br/><strong>Calendar</strong></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- END TABBAR -->
 
-						</div><!--end .row -->
-						<div class="row">
+                </div><!--end .row -->
+                <div class="box box-type-blog-masonry style-transparent">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <article>
+                                <div class="box-body box-body-darken style-support3 text-center">
+                                    <h3><i class="fa fa-quote-left"></i> The Heart Rate Signal
+                                        <i class="fa fa-quote-right"></i></h3>
+                                </div>
+                                <div class="box-body style-white blog-text">
+                                    <p>Each beat is categorized by a QRS-complex. The R component is the upward surging large peak.</p>
+                                </div>
+                            </article><!-- end /article -->
+                            <article>
+                                <div class="blog-image">
+                                    <img src="{{ url_for('static', filename='assets/img/QRS.png')}}" alt="" />
+                                </div>
+                            </article><!-- end /article -->
+                            <article>
+                                <div class="box-body style-support1">
+                                    <h3><div class="link-default">Moving Averages</div></h3>
+                                    <p>Moving average is a useful notion as the amplitude of R peaks can change over time, it can also help eliminate parts of signal when sensors are moved. The secondary peak may also show an amplitude close to that of the R-peak. Thus a moving average concept can be used to iteratively change the moving average threshold and determine which R values seems to fit in to give the best results.</p>
+                                </div>
+                            </article><!-- end /article -->
+                        </div><!--end .col-md-3 -->
+                        <div class="col-md-3">
+                            <article>
+                                <div class="box-body-darken style-support3">
+                                    <img class="img-responsive" src="{{ url_for('static', filename='assets/img/pulse_sesnsor.jpg')}}" alt="" />
+                                </div>
+                                <div class="box-body text-center style-inverse">
+                                    <h3><i class="fa fa-quote-left"></i> Analysis Methodology <i class="fa fa-quote-right"></i></h3>
+                                </div>
+                                <div class="box-body style-white blog-text">
+                                    <div class="height-12 force-padding scroll">
+                                        <p>The dataset comprises of timer readings and mv observations captured by an instrument. The approach mainly focusses on finding the positions of all the R-peaks in the dataset.</p>
+                                        <p>The R peaks can be found by determining each QRS complex region of interest and finding the local maxima in each of these regions. There are three broad ways of achieving this; first is to fit a curve on the region of interest (ROI) and find the peaks maxima. The second method entails determining the slope between each ROI and find the point where the slope reverses. The last method requires finding all points in the ROI and finding the position of the highest point.</p>
+                                        <p>As we can see from the heart beat plot on the left; apart from the R peak, the data also has P and T peaks. These might not be as sharp at the R peak, but to ensure that our algorithm does not detect these peaks as “R” values, we find the moving average of the signal and consider R points to only be those points which are above the moving average of the signal. </p>
+                                        <p>The frequency of measurement is found out using the Fourier transforms are also used. It takes a signal that repeats over time and determines the frequency of the signal. It uses the concept of transforming signals from time to frequency domain. As Wikipedia explains, “In the study of Fourier series, periodic functions are written as the sum of simple waves.”</p>
+                                    </div>
+                                </div>
+                            </article><!-- end /article -->
+                        </div>
+                        <div class="col-md-3">
+                            <article>
+                                <div class="box-body style-support3 blog-text box-body-darken">
+                                    <h3><i class="link-default">Signal Filtering</i></h3>
+                                    <p>Signals are mostly noisy. Noise can be reduced and R-peak estimation can be improved by leveraging Butterworth Filters. These filters act as a thresholding medium, allowing frequencies only within a range to maintain values. All other values are estimated to either the highest point or the lowest measure of the filter. However, this is not a hard threshold, that is signals are allowed to slightly fade into the threshold, allowing slightly higher/lower values, i.e. reducing its amplitude.</p>
+                                    <p>Note: Whether or not to filter a signal is a call the data scientist needs to make.</p>
+                                    <p>This methodology is important because a missed R value gives a R-R interval twice as big as the average R-R interval; an extra R value will halve the R-R value. Thus, increasing the R-R interval standard deviation.</p>
+                                </div>
+                                <div class="blog-image">
+                                    <img class="img-responsive" src="{{ url_for('static', filename='assets/img/RRinterval.png')}}" alt="" />
+                                </div>
+                            </article><!-- end /article -->
+                            <article>
+                                <div class="box-body text-center style-info">
+                                    <h3><i class="fa fa-quote-left"></i> Heart Rate <i class="fa fa-quote-right"></i></h3>
+                                </div>
 
-						</div><!--end .row -->
-					</div><!--end .section-body -->
-				</section>
-			</div><!--end #content-->
-			<!-- END CONTENT -->
+                                <p>Once we have the frequency of Sampling and the R-peak values, averaging can be used to find the ‘beats per minute’ (BPM) measure.</p>
+                            </article><!-- end /article -->
+                        </div><!--end .col-md-3 -->
+                        <div class="col-md-3">
+                            <article>
+                                <div class="box-body text-center style-inverse">
+                                    <h3><i class="fa fa-quote-left"></i> Time Series Measures <i class="fa fa-quote-right"></i></h3>
+                                </div>
+                                <div class="box-body blog-text style-white">
+                                    <ul>
+                                        <li>BPM</li>
+                                        <li>IBI (inter-beat interval), or the R-R interval</li>
+                                        <li>SDNN, the standard deviation of intervals between heartbeats</li>
+                                        <li>SDSD, the standard deviation of successive differences between adjacent R-R intervals</li>
+                                        <li>RMSSD, the root mean square of successive differences between adjacent R-R intervals</li>
+                                        <li>pNN50/pNN20, the proportion of differences greater than 50ms / 20ms.</li>
+                                    </ul>
+                                    <p>These “Heart Rate Variability” (HRV) measures, give information about how the heart rate varies over time.</p>
+                                </div>
+                            </article><!-- end /article -->
+                            <article>
+                                <div class="box-body style-support1 text-center">
+                                    <h3><i class="fa fa-quote-left"></i> Frequency Domain Measures
+                                        <i class="fa fa-quote-right"></i></h3>
+                                </div>
+                                <div class="box-body style-white blog-text">
+                                    <div class="height-6 force-padding scroll">
 
-		</div><!--end #base-->
-		<!-- END BASE -->
+                                        <p>Frequency can be classified into HF (High Frequency), MF (Mid Frequency) and LF (Low Frequency) bands. The MF and HF bands are often taken together and just labeled ‘HF’. 0.04-0.15Hz is the LF band and 0.16-0.5Hz is the HF band. The LF band seems related to short-term blood pressure variation, the HF band to breathing rate.</p>
+                                        <p>HF and LF are found by re-sampling the signal in order to approximate the spectrum, then transform the re-sampled signal to the frequency domain.</p>
+                                        <p>Instead of transforming the BPM to the frequency measure, we are looking to transform the R-R intervals to the frequency domain. This is because, the heart rate speeds up and slows down, expressed as change in distance between R-R intervals.</p>
+                                        <p>However, Fourier Transform is based on evenly spaced data, (R-R intervals are not because of changing body needs). Thus, we create an evenly spaced timeline of R-R intervals (by interpolating the signal- resampling). The frequency is then found by calculating the spacing between the resampled R-R intervals.</p>
+                                    </div>
+                                </div>
+                            </article><!-- end /article -->
+                        </div><!--end .col-md-3 -->
+                    </div><!--end .row -->
+                </div><!--end .box -->
+                <!-- END BLOG MASONRY -->
 
-		<!-- BEGIN JAVASCRIPT -->
-		<!--[if lte IE 8]>
+            </div><!--end .section-body -->
+        </section>
+    </div><!--end #content-->
+    <!-- END CONTENT -->
+
+</div><!--end #base-->
+<!-- END BASE -->
+
+<!-- BEGIN JAVASCRIPT -->
+<!--[if lte IE 8]>
 		<script src="{{ url_for('static', filename='assets/js/libs/excanvas-modified/excanvas.min.js')}}"></script>
 		<![endif]-->
-		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-1.11.0.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/jquery-ui/jquery-ui-1.10.3.custom.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/core/BootstrapFixed.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/bootstrap/bootstrap.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/spin.js/spin.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/moment/moment.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.time.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.resize.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.orderBars.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.pie.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/jquery-knob/jquery.knob.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/sparkline/jquery.sparkline.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/slimscroll/jquery.slimscroll.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/libs/fullcalendar/fullcalendar.min.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoCharts.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/core/demo/DemoDashboard.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
-		<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
-		<!-- END JAVASCRIPT -->
+<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-1.11.0.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/jquery-ui/jquery-ui-1.10.3.custom.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/BootstrapFixed.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/moment/moment.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.time.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.resize.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.orderBars.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/flot/jquery.flot.pie.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/jquery-knob/jquery.knob.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/sparkline/jquery.sparkline.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/slimscroll/jquery.slimscroll.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/libs/fullcalendar/fullcalendar.min.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/demo/DemoCharts.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/demo/DemoDashboard.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/App.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/demo/Demo.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/core/demo/DemoCalendar.js')}}"></script>
 
-	</body>
+<!-- END JAVASCRIPT -->
+
+</body>
 </html>

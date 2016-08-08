@@ -2,9 +2,8 @@ from flask import Flask, render_template, request, url_for, flash, session, redi
 import os
 import data_analysis
 import pandas as pd
-from flask import jsonify
 import csv
-import fileinput, sys
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = ["csv"]
@@ -26,6 +25,7 @@ def data_avg():
     data = data_analysis.read_data(session["filename"])
     frequency = data_analysis.calc_freq_rate(data)
     filtered = data_analysis.butter_lowpass_filter(data["hart"], 2.5, frequency, 5)
+    data['hart'] = filtered
     roll_mean_data = data_analysis.rolling_mean(data, window_size=0.75, frequency=frequency)
     roll_mean_data.to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "moving_avg.csv"),
                           index = False)
@@ -43,7 +43,15 @@ def login():
 
 @app.route("/dashboard", methods = ["GET"])
 def dashboard():
-    return render_template("html/pages/dashboard.html")
+    file_info = os.path.join(UPLOAD_FOLDER, "uploaded_info.csv")
+    data = pd.read_csv(file_info)
+    # print data.head()
+    gender = data["gender"]
+    dob = data["dob"]
+    patient_name = data["patient_name"]
+    filename = data["filename"]
+    return render_template("html/pages/dashboard.html", patient_name=patient_name,
+                           dob=dob, gender=gender, filename = filename)
 
 @app.route("/locked", methods = ["GET"])
 def locked():
@@ -71,7 +79,7 @@ def login_check():
         else:
             session["logged_in"] = True
             session["file_name"] = None
-            return redirect(url_for("profile"))
+            return redirect(url_for("dashboard"))
 
 @app.route('/uploaded', methods=['GET', 'POST'])
 def uploaded():
@@ -129,7 +137,7 @@ def csvfiles():
     file_names = data["filename"]
     number_readings = data["reading_number"]
     patient_name = data["patient_name"]
-    print patient_name
+    # print patient_name
 
 
     flash("File Uploaded")
@@ -163,8 +171,24 @@ def peaks():
     R_positions = data_analysis.signal_measures["R_positions"]
     ybeat = data_analysis.signal_measures["R_values"]
     bpm = data_analysis.time_measures["bpm"]
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    plt.title("Heart Rate signal with R-complexes")
+    ax.plot(roll_mean_data["hart"], alpha=0.5, color='blue', label="raw signal", ls = '-')
+    ax.plot(roll_mean_data["hart_rolling_mean"], color='orange', label="moving average", ls = '-.')
+    ax.scatter(R_positions, ybeat, color='red', s= 3, label = "R-complexes")
+    ax.legend(loc=4, framealpha=0.0)
+
+    cur_axes = plt.gca()
+    cur_axes.axes.get_xaxis().set_ticklabels([])
+    if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png")):
+        os.remove(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"))
+    plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"),
+                transparent=True, bbox_inches='tight', pad_inches=0)
+    # del plt.figure
     return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"),
-                           bpm = bpm, frequency = frequency)
+                           bpm = bpm, frequency = frequency, fig = url_for("static", filename = "temp/peaks.png"))
 
 @app.route('/delete/<filename>/<index_val>', methods = ["POST"])
 def delete(filename, index_val):
@@ -179,4 +203,4 @@ def delete(filename, index_val):
     return redirect(url_for("csvfiles"))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , host='0.0.0.0', port=5003)
