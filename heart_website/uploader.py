@@ -3,6 +3,9 @@ import os
 import data_analysis
 import pandas as pd
 import csv
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 
 app = Flask(__name__)
@@ -181,7 +184,7 @@ def peaks():
     if os.path.isfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png")):
         os.remove(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"))
     plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"),
-                transparent=True, bbox_inches='tight', pad_inches=0)
+                transparent=True, bbox_inches='tight', pad_inches=0, dpi=100)
     # del plt.figure
     return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"),
                            bpm = bpm, frequency = frequency, fig = url_for("static", filename = "temp/peaks.png"))

@@ -1,6 +1,6 @@
-from fabric.api import run, sudo, env
+from fabric.api import run, sudo, env, put
 import subprocess
-
+import os
 
 ### LINUX PACKAGES TO INSTALL ###
 
@@ -40,17 +40,10 @@ def vagrant():
 
 def aws():
     """Defines the AWS server's environment variables"""
-    env.hosts = "ec2-52-39-225-197.us-west-2.compute.amazonaws.com"
+    env.hosts = "ec2-52-42-238-192.us-west-2.compute.amazonaws.com"
     env.user = "ubuntu"
     env.key_filename = "/Users/gaurikatyagi/Documents/heart_key_pair.pem"
     env.virtualenv = {'dir': '/server', 'name':'venv'}
-
-def aws_server():
-    env.hosts = ['0.0.0.0']
-    env.user = 'gaurikatyagi'
-    env.key_filename = '~/.ssh/id_rsa'
-    env.virtualenv = {'dir': '/Users/gaurikatyagi/Documents/github/HS698/venv',
-                      'name': 'venv'}
 
 def bootstrap():
     """Set up and configure Vagrant to be able to serve the web app.
@@ -62,6 +55,12 @@ def bootstrap():
     sub_create_virtualenv()
     sub_install_python_requirements()
 
+def aws_bootstrap():
+    aws_sub_install_packages()
+    aws_copy()
+    aws_sub_install_virtualenv()
+    aws_sub_create_virtualenv()
+    aws_sub_install_python_requirements()
 
 def sub_install_packages():
     """Install Ubuntu packages using apt-get, Ubuntu's package manager."""
@@ -125,4 +124,74 @@ def dev_server():
     # Run the file run_api.py to start the Flask app
     # dev_server = 'python heart_website/uploader.py'
     dev_server = 'python /vagrant/heart_website/uploader.py'
+    run(activate + '; ' + dev_server)
+
+def aws_sub_install_packages():
+    """Install Ubuntu packages using apt-get, Ubuntu's package manager."""
+    sudo ('sudo dpkg --configure -a')
+    sudo('apt-get -y upgrade')  # Upgrade the system
+    # sudo('apt-get -y remove grub-pc')
+    # sudo('apt-get -y install grub-pc')
+    # sudo('grub-install /dev/sda') # precaution
+    # sudo('update-grub')
+    sudo('apt-get update')  # Update repository links
+    package_str = ' '.join(INSTALL_PACKAGES)
+    sudo('apt-get -y install ' + package_str)  # Install the packages
+    sudo('sudo apt-get install unzip')
+    sudo('apt-get -y build-dep matplotlib')
+
+
+def aws_sub_install_virtualenv():
+    """Install the Python package 'virtualenv' so we can install Python
+    packages safely into a virtualenv and not the system Python.
+    """
+    sudo('pip install virtualenv')  # Need sudo b/c installing to system Python
+
+
+def aws_sub_create_virtualenv():
+    """Creates a Python virtualenv within which application requirements will
+    be installed.
+    """
+    # Create folder to put virtualenv within
+    mkdir = 'mkdir -p {0}; chown {1} {0}'.format(
+       env.virtualenv['dir'], env.user)
+    sudo(mkdir)
+    # Create the virtualenv if it doesn't exist
+    mkvenv = 'if [ ! -d {0}/{1} ]; then virtualenv {0}/{1}; fi'.format(
+       env.virtualenv['dir'], env.virtualenv['name'])
+    run(mkvenv)
+
+
+def aws_sub_install_python_requirements():
+    """Install the Flask apps' Python requirements into the virtualenv.
+
+    We need to activate the virtualenv before installing into it. We do that
+    with the command 'source /server/bin/activate'. The application requirements
+    live in the requirements.txt file shared with the VM. This file lives at
+    /vagrant/flask_ml/requirements.txt.
+    """
+    # Activate the virtualenv
+    activate = 'source {0}/{1}/bin/activate'.format(
+        env.virtualenv['dir'], env.virtualenv['name'])
+    # Install Python requirements
+    install = 'pip install -r /server/heart_website/requirements.txt'
+    # install = 'pip install -r /vagrant/heart_website/requirements.txt'
+    # Join and execute the commands
+    run(activate + '; ' + install)
+
+def aws_copy():
+    # make sure the directory is there!
+    run('mkdir -p /server/')
+
+    # our local 'testdirectory' - it may contain files or subdirectories ...
+    put(os.path.dirname(os.path.abspath( __file__ )), '/server/')
+
+def aws_dev_server():
+    """Run the Flask development server on the VM."""
+    # Activate the virtualenv
+    activate = 'source {0}/{1}/bin/activate'.format(
+        env.virtualenv['dir'], env.virtualenv['name'])
+    # Run the file run_api.py to start the Flask app
+    dev_server = 'python /server/heart_website/uploader.py'
+    # dev_server = 'python /vagrant/heart_website/uploader.py'
     run(activate + '; ' + dev_server)
