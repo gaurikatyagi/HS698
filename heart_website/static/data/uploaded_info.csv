@@ -1,5 +1,5 @@
-,filename,reading_number,patient_name,gender,dob
-0,sanu.csv,21312,Sanu Samuel,Male,1976-07-30
-1,vanessa.csv,11223322,Vanessa Penner,Female,2016-07-30
-3,Sammy.csv,21123,Sammy Perinez,Female,1987-06-22
-4,Gaurika.csv,313123,Gaurika Tyagi,Female,2016-07-30
+"filename","reading_number","patient_name","gender","dob"
+"sanu.csv","21312","Sanu Samuel","Male","1976-07-30"
+"vanessa.csv","11223322","Vanessa Penner","Female","2016-07-30"
+"Sammy.csv","21123","Sammy Perinez","Female","1987-06-22"
+"Gaurika.csv","313123","Gaurika Tyagi","Female","2016-07-30"

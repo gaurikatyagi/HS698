@@ -59,7 +59,7 @@ def locked():
 
 @app.route("/profile", methods = ["GET"])
 def profile():
-    return redirect(url_for("csvfiles"))
+    return redirect(url_for("csvfiles", comment = "Upload a file Now"))
 
 @app.route("/blank", methods = ["GET", "POST"])
 def blank():
@@ -83,6 +83,7 @@ def login_check():
 
 @app.route('/uploaded', methods=['GET', 'POST'])
 def uploaded():
+    comment = ""
     if request.method == 'POST':
         # check if the post request has the file part
         session["success"] = False
@@ -106,29 +107,28 @@ def uploaded():
                     file_present = True
                     break
             file_csv.close()
-            comment = "File Uploaded"
             if file_present == False:
                 reading_number = request.form["reading_number"]
                 patient_name = request.form["patient_name"]
                 gender = request.form["gender"]
                 dob = request.form.get("dob")
-                file_csv = open(UPLOAD_FOLDER+"/uploaded_info.csv", 'ab')
+                file_csv = open(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"), 'ab')
                 writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_save_name))
-                writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
+                # writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
                 writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
                 file_csv.close()
+                comment = comment + "File Uploaded"
             else:
-                comment = "File Already Exists"
+                comment = comment+"File Already Exists"
             session["success"] = True
-            session["comment"] = comment
-            return redirect(url_for("csvfiles"))
+            return redirect(url_for("csvfiles", comment = comment))
         else:
             flash("Wrong filetype")
             return render_template("html/pages/500.html")
 
-@app.route("/csvfiles")
-def csvfiles():
+@app.route("/csvfiles/<comment>")
+def csvfiles(comment):
     file_names = find_csv_filenames()
     # entries = [dict(file = index, text = row) for index, row in enumerate(file_names)]
     file_info = os.path.join(UPLOAD_FOLDER, "uploaded_info.csv")
@@ -138,15 +138,11 @@ def csvfiles():
     number_readings = data["reading_number"]
     patient_name = data["patient_name"]
     # print patient_name
+    print comment
 
-
-    flash("File Uploaded")
-    if "comment" in session:
-        return render_template("html/pages/profile.html", patient_name = patient_name,
-                               number_readings = number_readings, file_names = file_names, comment = session["comment"])
-    else:
-        return render_template("html/pages/profile.html", patient_name=patient_name,
-                               number_readings=number_readings, file_names=file_names)
+    # flash("File Uploaded")
+    return render_template("html/pages/profile.html", patient_name = patient_name,
+                               number_readings = number_readings, file_names = file_names, comment = comment)
 
 @app.route("/analyze/<filename>", methods = ["POST"])
 def analyze(filename):
@@ -198,9 +194,19 @@ def delete(filename, index_val):
     os.remove(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"))
     file_info = file_info.drop(file_info.index[[index_val]])
     file_info.reindex()
-    file_info.to_csv(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"))
-    # return jsonify(filename, index_val, file_remove_path)
-    return redirect(url_for("csvfiles"))
+
+    file_csv = open(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"), 'ab')
+    writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
+    writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
+    for index in range(len(file_info.index)):
+        file_save_name = file_info.ix[index]["filename"]
+        reading_number = file_info.ix[index]["reading_number"]
+        patient_name = file_info.ix[index]["patient_name"]
+        gender = file_info.ix[index]["gender"]
+        dob = file_info.ix[index]["dob"]
+        writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
+    file_csv.close()
+    return redirect(url_for("csvfiles", comment = "File Deleted"))
 
 if __name__ == '__main__':
     app.run(debug=True , host='0.0.0.0', port=5003)

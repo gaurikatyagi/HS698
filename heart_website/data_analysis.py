@@ -62,8 +62,7 @@ def butter_lowpass_filter(data, cutoff, frequency, order = 5):
     return y
 
 def fit_peaks(data, fs):
-    moving_average_list = [2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50] #list with
-    #moving average raise perccentages
+    moving_average_list = [2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50] #list with moving average raise percentages
     rr_standard_deviation = []
     for ma in moving_average_list: #detect peaks with all moving average percentages
         detect_peaks(data, ma/100.0)

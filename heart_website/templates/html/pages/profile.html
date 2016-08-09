@@ -228,8 +228,8 @@
                                             <!-- START PROFILE CONTENT -->
                                             <div class="col-sm-9">
                                                 <div class="alert alert-warning" id = "load">
-                                                    <i class="fa fa-comments"></i> Upload a file
-                                                    <a href="#" class="link-default">Read comments</a>
+                                                    <i class="fa fa-comments"></i>
+                                                    <a href="#" class="link-default">{{ comment }}</a>
                                                 </div>
                                                 <div class="box-body">
                                                     <div class="row">
@@ -326,7 +326,7 @@
                                                                             <label for="record_number" class="control-label">Number of Readings</label>
                                                                         </div>
                                                                         <div class="col-sm-4">
-                                                                            <input type="number" id="reading_number" name="reading_number" class="form-control" placeholder="#Number of Readings">
+                                                                            <input type="number" id="reading_number" name="reading_number" class="form-control" placeholder="#Number of Readings" required>
                                                                             <p class="help-block">Use Numeric characters without commas.</p>
                                                                         </div>
                                                                     </div>
@@ -338,7 +338,7 @@
                                                                             <label for="patient_name" class="control-label">Patient Name</label>
                                                                         </div>
                                                                         <div class="col-sm-9">
-                                                                            <input type="text" name="patient_name" id="patient_name" class="form-control" placeholder="Name of Patient who's heart beat is being analyzed">
+                                                                            <input type="text" name="patient_name" id="patient_name" class="form-control" placeholder="Name of Patient who's heart beat is being analyzed" required>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
@@ -362,7 +362,7 @@
                                                                         </div>
                                                                         <div class="col-md-9">
                                                                             <div class='input-group control-width-normal' id='demo-date'>
-                                                                                <input type="date" class="form-control" id = "dob" name="dob">
+                                                                                <input type="date" class="form-control" id = "dob" name="dob" required>
                                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                             </div>
                                                                         </div>

@@ -75,6 +75,7 @@ def sub_install_packages():
     package_str = ' '.join(INSTALL_PACKAGES)
     sudo('apt-get -y install ' + package_str)  # Install the packages
     sudo('sudo apt-get install unzip')
+    sudo('apt-get -y build-dep matplotlib')
 
 
 def sub_install_virtualenv():
@@ -110,8 +111,8 @@ def sub_install_python_requirements():
     activate = 'source {0}/{1}/bin/activate'.format(
         env.virtualenv['dir'], env.virtualenv['name'])
     # Install Python requirements
-    install = 'pip install -r heart_website/requirements.txt'
-    # install = 'pip install -r vagrant/heart_website/requirements.txt'
+    # install = 'pip install -r heart_website/requirements.txt'
+    install = 'pip install -r /vagrant/heart_website/requirements.txt'
     # Join and execute the commands
     run(activate + '; ' + install)
 
@@ -122,6 +123,6 @@ def dev_server():
     activate = 'source {0}/{1}/bin/activate'.format(
         env.virtualenv['dir'], env.virtualenv['name'])
     # Run the file run_api.py to start the Flask app
-    dev_server = 'python heart_website/uploader.py'
-    # dev_server = 'python /vagrant/heart_website/uploader.py'
+    # dev_server = 'python heart_website/uploader.py'
+    dev_server = 'python /vagrant/heart_website/uploader.py'
     run(activate + '; ' + dev_server)
