@@ -185,7 +185,7 @@ def peaks():
         os.remove(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"))
     plt.savefig(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "temp", "peaks.png"),
                 transparent=True, bbox_inches='tight', pad_inches=0, dpi=100)
-    # del plt.figure
+    print (data_analysis.signal_measures["best"])
     return render_template("html/pages/show_signal.html", data_file = url_for("static", filename = "temp/moving_avg.csv"),
                            bpm = bpm, frequency = frequency, fig = url_for("static", filename = "temp/peaks.png"))
 
@@ -198,15 +198,15 @@ def delete(filename, index_val):
     file_info = file_info.drop(file_info.index[[index_val]])
     file_info.reindex()
 
-    file_csv = open(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"), 'ab')
+    file_csv = open(os.path.join(UPLOAD_FOLDER, "uploaded_info.csv"), 'wb')
     writer = csv.writer(file_csv, quoting=csv.QUOTE_ALL)
     writer.writerow(["filename", "reading_number", "patient_name", "gender", "dob"])
     for index in range(len(file_info.index)):
-        file_save_name = file_info.ix[index]["filename"]
-        reading_number = file_info.ix[index]["reading_number"]
-        patient_name = file_info.ix[index]["patient_name"]
-        gender = file_info.ix[index]["gender"]
-        dob = file_info.ix[index]["dob"]
+        file_save_name = file_info.iloc[index]["filename"]
+        reading_number = file_info.iloc[index]["reading_number"]
+        patient_name = file_info.iloc[index]["patient_name"]
+        gender = file_info.iloc[index]["gender"]
+        dob = file_info.iloc[index]["dob"]
         writer.writerow([file_save_name, reading_number, patient_name, gender, dob])
     file_csv.close()
     return redirect(url_for("csvfiles", comment = "File Deleted"))

@@ -57,7 +57,7 @@ def bootstrap():
 
 def aws_bootstrap():
     aws_sub_install_packages()
-    aws_copy()
+    # aws_copy()
     aws_sub_install_virtualenv()
     aws_sub_create_virtualenv()
     aws_sub_install_python_requirements()
@@ -171,27 +171,27 @@ def aws_sub_install_python_requirements():
     /vagrant/flask_ml/requirements.txt.
     """
     # Activate the virtualenv
-    activate = 'source {0}/{1}/bin/activate'.format(
+    activate = 'sudo source {0}/{1}/bin/activate'.format(
         env.virtualenv['dir'], env.virtualenv['name'])
     # Install Python requirements
-    install = 'pip install -r /server/heart_website/requirements.txt'
+    install = 'sudo pip install -r /home/heart_website/requirements.txt'
     # install = 'pip install -r /vagrant/heart_website/requirements.txt'
     # Join and execute the commands
     run(activate + '; ' + install)
 
 def aws_copy():
     # make sure the directory is there!
-    run('mkdir -p /server/')
+    run('mkdir -p /home/')
 
     # our local 'testdirectory' - it may contain files or subdirectories ...
-    put(os.path.dirname(os.path.abspath( __file__ )), '/server/')
+    put(os.path.dirname(os.path.abspath( __file__ )), '/home/')
 
 def aws_dev_server():
     """Run the Flask development server on the VM."""
     # Activate the virtualenv
-    activate = 'source {0}/{1}/bin/activate'.format(
+    activate = 'sudo source {0}/{1}/bin/activate'.format(
         env.virtualenv['dir'], env.virtualenv['name'])
     # Run the file run_api.py to start the Flask app
-    dev_server = 'python /server/heart_website/uploader.py'
+    dev_server = 'python /home/heart_website/uploader.py'
     # dev_server = 'python /vagrant/heart_website/uploader.py'
     run(activate + '; ' + dev_server)

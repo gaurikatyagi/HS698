@@ -65,7 +65,7 @@ def fit_peaks(data, fs):
     moving_average_list = [2, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50] #list with moving average raise percentages
     rr_standard_deviation = []
     for ma in moving_average_list: #detect peaks with all moving average percentages
-        detect_peaks(data, ma/100.0)
+        detect_peaks(data, ma/fs)
         R_R_measures(fs)
         bpm = (len(signal_measures["R_positions"])/(len(data["hart"])/fs)*60)
         rr_standard_deviation.append((signal_measures["RR_standard_deviation"], bpm, ma))
@@ -74,9 +74,8 @@ def fit_peaks(data, fs):
             signal_measures["best"]= [sd, ma_item] #the items in rr_standard_deviation are sorted by moving average as they
             #are in the same sequence we fed in
             # print signal_measures["best"]
-            break
     # detect_peaks(data, signal_measures["best"][1], fs)
-    detect_peaks(data, (signal_measures["best"][1]/100.0))
+    detect_peaks(data, (signal_measures["best"][1]/fs))
     R_R_measures(fs)
 
 def detect_peaks(data, moving_average_percent):
@@ -136,7 +135,7 @@ def R_R_measures(frequency):
     RR_msdiff = [] #Stores the mili second distance between consecutive R values
     for position in range(len(R_positions)-1):
         RR_interval = R_positions[position+1]-R_positions[position]
-        distance_ms = (RR_interval/frequency)*1000.0
+        distance_ms = (RR_interval/frequency)*frequency
         RR_msdiff.append(distance_ms)
     RR_diff = []
     RR_sqdiff = []
